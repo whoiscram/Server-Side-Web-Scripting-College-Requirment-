@@ -48,7 +48,8 @@
                 <h1>OPM Artists</h1>
                 <p>You can watch and engage with your favorite OPM artists like Parokya ni Edgar, Imago, Moonstar88, and
                     6Cyclemind!</p>
-                <button class="join_b">Join</button>
+                <a href="join_event.php"><button class="join_b">Join</button></a>
+                
             </div>
         </div>
         <div class="awit" style="background-image: url(imgs/awit.jpg);">
@@ -85,9 +86,7 @@
     color: #f3ca20;
     font-size: 50px;">
                 <h1>About <br>Us</h1>
-                <p> this is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo natus doloremque
-                    doloribus, autem iste incidunt harum corporis nobis tenetur quia vel saepe alias repellat ducimus
-                    praesentium, esse, beatae vitae repudiandae.</p>
+                <p> Maki-Concert is a nonprofit organization that is dedicated to increasing awareness of various causes through music-centered community events such as concerts. It began in 2019 with just a simple project here in Baguio in support of local music artists' causes and funding. After two years of hard work and dedication, the project became an established nonprofit organization that focuses on concerts for a cause here in the Philippines.</p>
             </div>
         </div>
     </section>
@@ -99,11 +98,30 @@
         <div class="Container" style="padding: 25px;">
             <div class="cont" style="position: relative;
     color: #f3ca20;
-    font-size: 50px;">
-                <h1>CONTACT <br>Us</h1>
-                <p> this is about Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo natus doloremque
-                    doloribus, autem iste incidunt harum corporis nobis tenetur quia vel saepe alias repellat ducimus
-                    praesentium, esse, beatae vitae repudiandae.</p>
+    font-size: 10px;">
+                <h1>CONTACT US</h1>
+                <p> Thank you for your interest in Concert for a Cause! If you are curious about volunteering with us, 
+                    becoming our sponsor, or inquiries you have in mind, just feel free to reach out through email or 
+                    check our social media accounts linked below.
+                </p>
+                <br>
+                <p>
+                makiconcert@gmail.com<br>
+                facebook.com/makiconcert<br>
+                twitter.com/makiconcert<br>
+                instagram.com/makiconcert<br>
+                </<p>
+                <br>
+                <p>You can also text or call us via Globe/Smart:
+
+                Globe: 09274411986
+                Smart: 09616935772
+                </p>
+
+
+
+                
+
             </div>
         </div>
     </section>

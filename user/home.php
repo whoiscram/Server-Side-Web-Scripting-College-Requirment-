@@ -48,7 +48,7 @@
                 <h1>OPM Artists</h1>
                 <p>You can watch and engage with your favorite OPM artists like Parokya ni Edgar, Imago, Moonstar88, and
                     6Cyclemind!</p>
-                <button class="join_b">Join</button>
+					<a href="join_event.php"><button class="join_b">Join</button></a>
             </div>
         </div>
         <div class="awit" style="background-image: url(../imgs/awit.jpg);">
@@ -59,7 +59,7 @@
                     also promotes the importance of a nurturing home through the “Mapagkalingang Tahanan” advocacy which
                     supports both children and their parents, guardians, and caregivers in facilitating a sound learning
                     environment.</p>
-                <button class="join_b">Join</button>
+					<a href="join_event.php"><button class="join_b">Join</button></a>
             </div>
         </div>
         <div class="hiraya" style="background-image: url(../imgs/hiraya.jpg);">
@@ -70,7 +70,7 @@
                     a fundraiser to help bridge the pressing needs for basic necessities of the chosen beneficiary — the
                     families
                     of the children under the organization’s flagship project, Project Bata Mag-aral Ka (PBMK).</p>
-                <button class="join_b">Join</button>
+					<a href="join_event.php"><button class="join_b">Join</button></a>
             </div>
         </div>
     </article>
