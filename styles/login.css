@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "font_h1";
+    src: url(/frontend/fonts/Bellota\ Text.ttf);
+  }
+  
+  @font-face {
+    font-family: "font_p";
+    src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
+  }
+  
+  @font-face {
+    font-family: "font_o";
+    src: url(/fonts/Josefin\ Sans.ttf);
+  }
+  
+  body{   
+    background: #eee;  
+}  
+#frm{  
+    border: solid gray 1px;  
+    width:25%;  
+    border-radius: 2px;  
+    margin: 120px auto;  
+    background: white;  
+    padding: 50px;  
+}  
+#btn{  
+    color: #fff;  
+    background: #f3ca20;  
+    padding: 7px;  
+    margin-left: 70%;  
+}  

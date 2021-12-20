@@ -1,0 +1,162 @@
+@font-face {
+    font-family: "font_h1";
+    src: url(/fonts/Bellota\ Text.ttf);
+}
+
+@font-face {
+    font-family: "font_p";
+    src: url(//fonts/Baloo\ Bhaijaan\ 2.ttf);
+}
+
+@font-face {
+    font-family: "font_o";
+    src: url(/fonts/Josefin\ Sans.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0px;
+    font-family: verdana;
+}
+
+header {
+    
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100vh;
+}
+
+.Container {
+    padding: 20px;
+}
+
+.cont {
+    position: absolute;
+    bottom: 10px;
+    padding: 20px;
+    color: #f3ca20;
+}
+
+.cont h1 {
+    font-family: "font_h1";
+    font-size: 200px;
+}
+
+.cont p {
+    font-family: "font_p";
+    font-size: 24px;
+}
+
+#concert h1 {
+    color: #f3ca20;
+    font-family: "font_h1";
+    font-size: 100px;
+}
+
+#concert p {
+    font-family: "font_p";
+    font-size: 20px;
+}
+
+nav ul li:hover {
+    background-color: #171810;
+    border-radius: 25px;
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    line-height: 50px;
+    padding: 15px;
+    text-shadow: 1px 1px #000000;
+    text-align: right;
+}
+
+nav ul {
+    float: center;
+    margin-right: 30px;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    transition: 0.7s all;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f3ca20;
+    padding: 30px;
+    font-family: "font_o";
+    font-size: 20px;
+}
+
+article {
+    padding: 25vh;
+}
+
+.opm {
+    height: 350px;
+    background-image: url(/imgs/opm.jpg);
+    display: flex;
+    align-items: flex-start;
+    padding: 50px;
+    margin-bottom: 30px;
+    border-radius: 25px;
+}
+
+.awit {
+    height: 350px;
+    background-image: url(/imgs/awit.jpg);
+    display: flex;
+    align-items: flex-start;
+    padding: 50px;
+    margin-bottom: 30px;
+    border-radius: 25px;
+}
+
+.hiraya {
+    height: 350px;
+    background-image: url(/imgs/hiraya.jpg);
+    display: flex;
+    align-items: flex-start;
+    padding: 50px;
+    margin-bottom: 30px;
+    border-radius: 25px;
+}
+
+.concert-box {
+    text-shadow: 1px 1px #000000;
+    color: #f3ca20;
+    align-self: flex-end;
+    padding: 25px;
+}
+
+#concert {
+    background-color: #171810;
+}
+
+.join_b {
+    font-family: "font_p";
+    color: #fff;
+    background: black;
+    padding: 8px 60px;
+    text-decoration: none;
+    border: 1px solid yellow;
+    border-radius: 14px;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f3ca20;
+}
+
+.footer h1 {
+    font-family: "font_h1";
+    padding: 20px;
+    font-size: 24px;
+}

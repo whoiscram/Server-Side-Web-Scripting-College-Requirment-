@@ -1,5 +1,5 @@
 <?php
-    require_once 'admin/connection.php';
+    require_once '../admin/connection.php';
     session_start();
     
     if (isset($_SESSION['user'])) {
@@ -14,12 +14,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intayo MakiConcert</title>
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
 
 </head>
 
 <body>
-    <header style="background-image: url(../imgs/fred.jpg);">
+    <header style="background-image: url('../imgs/fred.jpg');">
         <div class="nav">
             <nav>
                 <ul>
@@ -27,7 +27,7 @@
                     <li><a href="#concert">CONCERTS</a></li>
                     <li><a href="#aboutUs">ABOUT US</a></li>
                     <li><a href="#contactus">CONTACT US</a></li>
-                    <li><a href="/user/login.php">LOGIN</a></li>
+                    <li><a href="/user/viewProfile.php">PROFILE</a></li>
                 </ul>
             </nav>
         </div>
@@ -43,7 +43,7 @@
     <article id="concert">
         <h1 style="text-align: center;">CONCERTS</h1>
         <br>
-        <div class="opm" style="background-image: url('imgs/opm.jpg');">
+        <div class="opm" style="background-image: url('../imgs/opm.jpg');">
             <div class="concert-box">
                 <h1>OPM Artists</h1>
                 <p>You can watch and engage with your favorite OPM artists like Parokya ni Edgar, Imago, Moonstar88, and
@@ -51,7 +51,7 @@
                 <button class="join_b">Join</button>
             </div>
         </div>
-        <div class="awit" style="background-image: url(imgs/awit.jpg);">
+        <div class="awit" style="background-image: url(../imgs/awit.jpg);">
             <div class="concert-box">
                 <h1>Awit Para Sa Mga Bata</h1>
                 <p>Be part of Save the Children Philippines’ ongoing “eSave Natin ang Pasko” Christmas fundraising
@@ -62,7 +62,7 @@
                 <button class="join_b">Join</button>
             </div>
         </div>
-        <div class="hiraya" style="background-image: url(imgs/hiraya.jpg);">
+        <div class="hiraya" style="background-image: url(../imgs/hiraya.jpg);">
             <div class="concert-box">
                 <h1>Hiraya</h1>
                 <p>Hiraya is a two-in-one event — both a celebration for our achievements for the first half of 2021, as
@@ -76,7 +76,7 @@
     </article>
 
 
-    <section id="aboutUs" style="background-image: url(imgs/about.jpg);
+    <section id="aboutUs" style="background-image: url(../imgs/about.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
     height: 100vh;">
@@ -92,7 +92,7 @@
         </div>
     </section>
 
-    <section id="contactus" style="background-image: url(imgs/contact.jpg);
+    <section id="contactus" style="background-image: url(../imgs/contact.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
     height: 100vh;">
