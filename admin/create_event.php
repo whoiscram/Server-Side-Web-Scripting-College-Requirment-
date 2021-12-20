@@ -70,6 +70,7 @@ require_once('config.php');
 
                 <input type="submit" name="create" value="Create event">
             </div>
+        </form>
     </div>
 </body>
 

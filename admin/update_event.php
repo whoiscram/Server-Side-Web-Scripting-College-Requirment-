@@ -74,6 +74,7 @@ require_once('config.php');
 
                 <input type="submit" name="update" value="Update event">
             </div>
+        </form>
     </div>
 </body>
 

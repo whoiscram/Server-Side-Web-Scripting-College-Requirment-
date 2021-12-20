@@ -42,6 +42,7 @@ require_once('config.php');
 
                 <input type="submit" name="delete" value="Delete event">
             </div>
+        </form>
     </div>
 </body>
 
