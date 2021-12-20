@@ -17,10 +17,10 @@
     margin: 0;
     padding: 0px;
     font-family: verdana;
+    text-shadow: 1px 1px #000000;
 }
 
 header {
-    
     background-repeat: no-repeat;
     background-size: 100%;
     height: 100vh;
@@ -35,6 +35,12 @@ header {
     bottom: 10px;
     padding: 20px;
     color: #f3ca20;
+    text-indent: 50px;
+}
+
+ul li {
+    list-style-type: none;
+    transition: 0.7s all;
 }
 
 .cont h1 {
@@ -148,6 +154,10 @@ article {
     font-size: 22px;
     cursor: pointer;
     display: inline-block;
+    text-align: center;
+}
+
+.button-center {
     text-align: center;
 }
 

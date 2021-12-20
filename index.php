@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <header style="background-image: url(../imgs/fred.jpg);">
+    <header style="background-image: url(imgs/fred.jpg);">
         <div class="nav">
             <nav>
                 <ul>
@@ -27,14 +27,14 @@
                     <li><a href="#concert">CONCERTS</a></li>
                     <li><a href="#aboutUs">ABOUT US</a></li>
                     <li><a href="#contactus">CONTACT US</a></li>
-                    <li><a href="/user/login.php">LOGIN</a></li>
+                    <li><a href="user/login.php">LOGIN</a></li>
                 </ul>
             </nav>
         </div>
         <div class="Container">
             <div class="cont">
                 <h1>Concerts <br>For A Cause</h1>
-                <p><br>We are Team Maki, a nonprofit organization dedicated to help people through music-centered
+                <p><br>We are Maki, a nonprofit organization dedicated to help people through music-centered
                     community events to support and increase awareness to our social cause.</p>
             </div>
         </div>
@@ -43,7 +43,7 @@
     <article id="concert">
         <h1 style="text-align: center;">CONCERTS</h1>
         <br>
-        <div class="opm" style="background-image: url('imgs/opm.jpg');">
+        <div class="opm" style="background-image: url(imgs/opm.jpg);">
             <div class="concert-box">
                 <h1>OPM Artists</h1>
                 <p>You can watch and engage with your favorite OPM artists like Parokya ni Edgar, Imago, Moonstar88, and
@@ -76,7 +76,6 @@
         </div>
     </article>
 
-
     <section id="aboutUs" style="background-image: url(imgs/about.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -84,9 +83,18 @@
         <div class="Container" style="padding: 25px;">
             <div class="cont" style="position: relative;
     color: #f3ca20;
-    font-size: 50px;">
-                <h1>About <br>Us</h1>
-                <p> Maki-Concert is a nonprofit organization that is dedicated to increasing awareness of various causes through music-centered community events such as concerts. It began in 2019 with just a simple project here in Baguio in support of local music artists' causes and funding. After two years of hard work and dedication, the project became an established nonprofit organization that focuses on concerts for a cause here in the Philippines.</p>
+    font-size: 50px;
+    text-align: center;">
+                <h1>ABOUT US</h1>
+                <p> Maki-Concert is a nonprofit organization that is dedicated to increasing awareness of various causes through
+                    music-centered community events such as concerts. It began in 2019 with just a simple project here in Baguio
+                    in support of local music artists' causes and funding. After two years of hard work and dedication, the project
+                    became an established nonprofit organization that focuses on concerts for a cause here in the Philippines. </p>
+                <br>
+                <p> Each year we host a variety of events to further our mission and allow us to support our community partners. 
+                    Thanks to our small business sponsors, we host monthly fundraising events at local restaurants and shops. 
+                    In addition to that, we have community and university organization partners that graciously host events on our 
+                    behalf throughout the year. </p>
             </div>
         </div>
     </section>
@@ -98,30 +106,29 @@
         <div class="Container" style="padding: 25px;">
             <div class="cont" style="position: relative;
     color: #f3ca20;
-    font-size: 10px;">
+    font-size: 20px;">
                 <h1>CONTACT US</h1>
                 <p> Thank you for your interest in Concert for a Cause! If you are curious about volunteering with us, 
                     becoming our sponsor, or inquiries you have in mind, just feel free to reach out through email or 
                     check our social media accounts linked below.
                 </p>
                 <br>
-                <p>
-                makiconcert@gmail.com<br>
-                facebook.com/makiconcert<br>
-                twitter.com/makiconcert<br>
-                instagram.com/makiconcert<br>
-                </<p>
-                <br>
-                <p>You can also text or call us via Globe/Smart:
-
-                Globe: 09274411986
-                Smart: 09616935772
-                </p>
-
-
-
                 
+                <ul>
+                    <li>Email:</li>
+                    <li><a href="#h">makiconcert@gmail.com</a></li>
+                    <br>
+                    <li>Social Media Accounts:</li>
+                    <li><a href="#h">facebook.com/makiconcert</a></li>
+                    <li><a href="#h">twitter.com/makiconcert</a></li>
+                    <li><a href="#h">instagram.com/makiconcert</a></li>
+                </ul>
 
+                <br>
+                <p>You can also text or call us via Globe/Smart:</p>
+                <br>
+                <p>Globe: 09274411986<br></p>
+                <p>Smart: 09616935772</p>
             </div>
         </div>
     </section>
@@ -130,7 +137,6 @@
         <div class="footer" style="text-align: center;">
             <h1>© 2021 by Team Maki</h1>
         </div>
-    
     </footer>
    
 </body>

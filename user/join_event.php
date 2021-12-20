@@ -10,7 +10,7 @@ require_once(__DIR__ .'/../admin/config.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View events (admin)</title>
-
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
     <style>
         table {
             border-collapse: collapse;
@@ -25,12 +25,37 @@ require_once(__DIR__ .'/../admin/config.php');
             background-color: #588c7e;
             color: white;
         }
+
+        h1 {
+            text-align: center;
+        }
     </style>
 
 </head>
 
 <body>
-    <h1>Viewing all available events</h1>
+    <header style="background-image: url(../imgs/opm.jpg);">
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a href="#cont">HOME</a></li>
+                    <li><a href="#concert">CONCERTS</a></li>
+                    <li><a href="#aboutUs">ABOUT US</a></li>
+                    <li><a href="#contactus">CONTACT US</a></li>
+                    <li><a href="viewProfile.php">PROFILE</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="Container">
+            <div class="cont">
+                <h1>OPM Artists</h1>
+                <p><br>You can watch and engage with your favorite OPM artists like Parokya ni Edgar, Imago, Moonstar88, and
+                    6Cyclemind!</p>
+            </div>
+        </div>
+    </header>
+
+    <h1>Event Details</h1>
 
     <div>
         <h1>
@@ -58,16 +83,24 @@ require_once(__DIR__ .'/../admin/config.php');
                         echo "<tr><td>" . $row["id"] . "</td><td>" . $row["title"] . "</td><td>" . $row["performer"] . "</td><td>" . $row["venue"] . "</td><td>" . $row["description"] . "</td><td>" . $row["dateStart"] . "</td><td>" . $row["dateEnd"] . "</td><td>" . $row["ticket_price"] . "</td><td>" . $row["status"] . "</td><tr>";
                     }
                     echo "</table>";
-                } else {
+                } /*else {
                     echo "No results.";
-                }
+                }*/
                 ?>
             </table>
     </div>
-
-    <div>
-        
+    
+    <div class="button-center">
+        <br><br><br>
+        <button class="join_b">Join</button>
+        <br><br><br>
     </div>
+ 
+    <footer>
+        <div class="footer" style="text-align: center;">
+            <h1>© 2021 by Team Maki</h1>
+        </div>
+    </footer>
 </body>
 
 </html>
