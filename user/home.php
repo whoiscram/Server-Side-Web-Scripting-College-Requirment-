@@ -2,8 +2,10 @@
     require_once '../admin/connection.php';
     session_start();
     
-    if (isset($_SESSION['user'])) {
-        header("location: index_logged.php");
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        
+    } else {
+        header("location: login.php");
     }
 ?>
 <!DOCTYPE html>

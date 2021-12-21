@@ -1,5 +1,7 @@
 <?php      
-    include("../admin/connection.php");  
+    require_once '../admin/connection.php';  
+    session_start();
+    
     $username = $_POST['user'];  
     $password = $_POST['pass']; 
     
@@ -20,12 +22,18 @@
             if($row["type"]=="member"){  
                 $_SESSION['user_id'] = $user_id;
                 header("location: home.php");
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username; 
              
             }else{
                 header("location: ../admin/admin.php");
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username; 
             }
         }else{
                 header("location: login.php");
         }
+
+        
         
 ?>  
