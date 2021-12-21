@@ -1,61 +1,19 @@
 <?php
-require_once '../admin/connection.php';
-session_start();
-
-if (isset($_SESSION['user'])) {
-    if ($row["role"] == "admin") {
-        header("location: ../admin/admin.php");
-    } else {
-        header("location: ../index.php");
-    }
+if(isset( $_SESSION['user_id'] ))
+{
+ $message = 'Users is already logged in';
 }
-
-if (isset($_REQUEST['login_btn'])) {
-    $email = filter_var(strtolower($_REQUEST['email']), FILTER_SANITIZE_EMAIL);
-    $password = strip_tags($_REQUEST['password']);
-
-    if (empty($email)) {
-        $errorMessage[] = 'Must enter email';
-    } elseif (empty($password)) {
-        $errorMessage[] = 'Must enter password';
-    } else {
-        $select_st = $db->prepare("SELECT * FROM users WHERE userName = :email LIMIT 1");
-        $select_st->execute([
-            ':email' => $email
-        ]);
-        $row = $select_st->fetch(PDO::FETCH_ASSOC);
-
-        if ($select_st->rowCount() > 0) {
-            if (password_verify($password, $row["password"])) {
-                $_SESSION['user']['name'] = $row["name"];
-                $_SESSION['user']['email'] = $row["email"];
-                $_SESSION['user']['id'] = $row["userId"];
-                $_SESSION['user']['role'] = $row["role"];
-                if ($row["role"] == "admin") {
-                    header("location: ../admin/admin.php");
-                } else {
-                    header("location: ../index.php");
-                }
-            }
-        } else {
-            $errorMessage[] = "Wrong email or password";
-        }
-    }
-}
-
 ?>
-
 <html>  
 <head>  
-    <title>PHP login system</title>  
-    
+    <title> Login Form</title>  
+   
     <link rel = "stylesheet" type = "text/css" href = "../styles/login.css">   
 </head>  
 <body>  
     <div id = "frm">  
         <h1>Login</h1>  
-    
-        <form name="f1" action = "home.php" onsubmit = "return validation()" method = "POST">  
+        <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
             <p>  
                 <label> UserName: </label>  
                 <input type = "text" id ="user" name  = "user" />  
@@ -69,7 +27,7 @@ if (isset($_REQUEST['login_btn'])) {
             </p>  
         </form>  
     </div>  
-      
+    
     <script>  
             function validation()  
             {  
