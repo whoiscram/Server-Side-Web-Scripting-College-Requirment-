@@ -1,8 +1,18 @@
 <?php
-if(isset( $_SESSION['user_id'] ))
-{
- $message = 'Users is already logged in';
+  require_once '../admin/connection.php'; 
+session_start();
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    if ($_SESSION["user"] == 1){ 
+            header("location: home.php");
+            exit;
+    }
+    else {
+        header("location: home.php");
+        exit;
+    }
 }
+
+   
 ?>
 <html>  
 <head>  

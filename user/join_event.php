@@ -1,5 +1,12 @@
 <?php
-require_once(__DIR__ .'/../admin/config.php');
+require_once(__DIR__ .'/../admin/connection.php');
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        
+} else {
+    header("location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +45,10 @@ require_once(__DIR__ .'/../admin/config.php');
         <div class="nav">
             <nav>
                 <ul>
-                    <li><a href="#cont">HOME</a></li>
-                    <li><a href="#concert">CONCERTS</a></li>
-                    <li><a href="#aboutUs">ABOUT US</a></li>
-                    <li><a href="#contactus">CONTACT US</a></li>
+                    <li><a href="home.php">HOME</a></li>
+                    <li><a href="#">CONCERTS</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">CONTACT US</a></li>
                     <li><a href="viewProfile.php">PROFILE</a></li>
                 </ul>
             </nav>

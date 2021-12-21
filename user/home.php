@@ -3,9 +3,11 @@
     session_start();
     
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        
+        // redirect to home.php
     } else {
+        // redirect to login page
         header("location: login.php");
+      
     }
 ?>
 <!DOCTYPE html>
