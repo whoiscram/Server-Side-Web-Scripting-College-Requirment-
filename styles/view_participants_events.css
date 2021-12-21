@@ -22,3 +22,17 @@ h1 {
     font-size: 60px;
     color: #f3ca20;
 }
+
+button {
+    font-family: "font_p";
+    color: #fff;
+    background: black;
+    padding: 8px 60px;
+    text-decoration: none;
+    border: 1px solid yellow;
+    border-radius: 14px;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}

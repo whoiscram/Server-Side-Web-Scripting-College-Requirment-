@@ -17,6 +17,11 @@ require_once('config.php');
 
     <div>
         <?php
+        include "view_events.php";
+        ?>
+    </div>
+    <div>
+        <?php
         if (isset($_POST['delete'])) {
             $id = $_POST['id'];
 
@@ -39,9 +44,17 @@ require_once('config.php');
                 <h1>Delete event</h1>
                 <p>Deleting an event. This action can't be undone.</p><br>
                 <label for="id"><b>ID of event to delete</b></label><br><br>
-                <input class="form-control" type="text" name="id" required><br><br><br><br>
+                <input class="form-control" type="text" name="id"><br><br><br><br>
 
-                <input type="submit" name="delete" value="Delete event">
+                <input type="submit" name="delete" value="Delete event"><br><br><br>
+
+                <button type="submit" formaction="create_event.php">Go to Create event</button>
+                <button type="submit" formaction="update_event.php">Go to Update event</button>
+                <br><br><br>
+                <button type="submit" formaction="view_events.php">View events</button>
+                <button type="submit" formaction="view_participants_events.php">View participants</button>
+                <br><br><br><br><br>
+                <button type="submit" formaction="logout.php">Logout</button>
             </div>
         </form>
     </div>

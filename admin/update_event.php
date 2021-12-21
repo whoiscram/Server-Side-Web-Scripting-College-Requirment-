@@ -17,6 +17,12 @@ require_once('config.php');
 
     <div>
         <?php
+        include "view_events.php";
+        ?>
+    </div>
+
+    <div>
+        <?php
         if (isset($_POST['update'])) {
             $id = $_POST['id'];
             $title = $_POST['title'];
@@ -47,33 +53,41 @@ require_once('config.php');
                 <h1>Update event</h1>
                 <p>Update necessary information.</p><br>
                 <label for="id"><b>ID to update</b></label><br><br>
-                <input class="form-control" type="text" name="id" required><br><br><br>
+                <input class="form-control" type="text" name="id"><br><br><br>
 
                 <label for="title"><b>New Title</b></label><br>
-                <input class="form-control" type="text" name="title" required><br><br><br>
+                <input class="form-control" type="text" name="title"><br><br><br>
 
                 <label for="performer"><b>New Performer</b></label><br>
-                <input class="form-control" type="text" name="performer" required><br><br><br>
+                <input class="form-control" type="text" name="performer"><br><br><br>
 
                 <label for="venue"><b>New Venue</b></label><br>
-                <input class="form-control" type="text" name="venue" required><br><br><br>
+                <input class="form-control" type="text" name="venue"><br><br><br>
 
                 <label for="desc"><b>New Description</b></label><br>
-                <input class="form-control" type="text" name="desc" required><br><br><br>
+                <input class="form-control" type="text" name="desc"><br><br><br>
 
                 <label for="datestart"><b>New Date Start</b></label><br>
-                <input class="form-control" type="datetime-local" name="datestart" required><br><br><br>
+                <input class="form-control" type="datetime-local" name="datestart"><br><br><br>
 
                 <label for="dateend"><b>New Date End</b></label><br>
-                <input class="form-control" type="datetime-local" name="dateend" required><br><br><br>
+                <input class="form-control" type="datetime-local" name="dateend"><br><br><br>
 
                 <label for="tprice"><b>New Ticket Price (in Php)</b></label><br>
-                <input class="form-control" type="text" name="tprice" required><br><br><br>
+                <input class="form-control" type="text" name="tprice"><br><br><br>
 
                 <label for="status"><b>New Status</b></label><br>
-                <input class="form-control" type="text" name="status" required><br><br><br><br>
+                <input class="form-control" type="text" name="status"><br><br><br><br>
 
-                <input type="submit" name="update" value="Update event">
+                <input type="submit" name="update" value="Update event"><br><br><br>
+
+                <button type="submit" formaction="create_event.php">Go to Create event</button>
+                <button type="submit" formaction="delete_event.php">Go to Delete event</button>
+                <br><br><br>
+                <button type="submit" formaction="view_events.php">View events</button>
+                <button type="submit" formaction="view_participants_events.php">View participants</button>
+                <br><br><br><br><br>
+                <button type="submit" formaction="logout.php">Logout</button>
             </div>
         </form>
     </div>
