@@ -3,7 +3,7 @@
     session_start();
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         if ($_SESSION["user"] == 1){ 
-                echo("landing page");
+            header("location: index.php");
                 exit;
         }
         else {
