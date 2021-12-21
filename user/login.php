@@ -25,7 +25,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
         <h1>Login</h1>  
         <form name="f1" action = "authentication.php" onsubmit = "return validation()" method = "POST">  
             <p>  
-                <label> UserName: </label>  
+                <label> Username: </label>  
                 <input type = "text" id ="user" name  = "user" />  
             </p>  
             <p>  

@@ -31,10 +31,10 @@
 	<div class="nav">
 		<nav>
 			<ul>
-				<li><a href="#cont">HOME</a></li>
-				<li><a href="#concert">CONCERTS</a></li>
-				<li><a href="#aboutUs">ABOUT US</a></li>
-				<li><a href="#contactus">CONTACT US</a></li>
+				<li><a href="home.php">HOME</a></li>
+				<li><a href="home.php">CONCERTS</a></li>
+				<li><a href="home.php">ABOUT US</a></li>
+				<li><a href="home.php">CONTACT US</a></li>
 				<li><a href="../admin/logout.php">LOG OUT</a></li>
 			</ul>
 		</nav>
