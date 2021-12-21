@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "font_h1";
+    src: url(/fonts/Bellota\ Text.ttf);
+}
+
+@font-face {
+    font-family: "font_p";
+    src: url(//fonts/Baloo\ Bhaijaan\ 2.ttf);
+}
+
+@font-face {
+    font-family: "font_o";
+    src: url(/fonts/Josefin\ Sans.ttf);
+}
+
+body {
+    background-color: #171810;
+}
+
+h1 {
+    font-family: "font_h1";
+    font-size: 60px;
+    color: #f3ca20;
+}
+
+button {
+    font-family: "font_p";
+    color: #fff;
+    background: black;
+    padding: 8px 60px;
+    text-decoration: none;
+    border: 1px solid yellow;
+    border-radius: 14px;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
