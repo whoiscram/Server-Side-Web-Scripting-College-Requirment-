@@ -1,5 +1,11 @@
 <?php
 require_once('config.php');
+session_start();
+if(empty($_SESSION['logged_in']))
+{
+    header('Location: ../user/login.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
