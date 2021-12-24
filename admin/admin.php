@@ -1,22 +1,18 @@
-<?php
-  require_once 'config.php'; 
-  $_SESSION["username"] = "user";
-  $_SESSION["role"] = "role";
-  session_start();
-  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    if ($_SESSION["username"] == "admin"){ 
-        //continue as admin
-} else{
-    //header("Location: ../user/home.php");
-    echo '<script>alert("YOU ARE NOT ADMIN")</script>'; //if username/role is not admin promt this message 
-    exit();
+<?php 
+ require_once 'connection.php'; 
+session_start();
+if(!isset($_SESSION['loggedin'])) {
+	header('location: ../user/login.php');
 }
-    
-} else {
-    header('Location: ../user/login.php'); // if not logged in redirect 
-}
-?>
 
+//if member must destroy session
+if($_SESSION["type"] == "member"){
+    session_destroy();
+    exit();
+    
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

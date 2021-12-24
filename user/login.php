@@ -1,20 +1,7 @@
 <?php
   require_once '../admin/connection.php'; 
 session_start();
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    if ($_SESSION["user"] == 1){ 
-            header("Location: ../user/home.php");
-            exit;
-    }
-    else {
-       header("Location: ../admin/admin.php");
-        exit;
-    }
-
-    $_SESSION["username"] = "user"; // passing username
-}
-
-   
+//authtenticaiton.php
 ?>
 <html>  
 <head>  

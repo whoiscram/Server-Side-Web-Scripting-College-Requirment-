@@ -21,14 +21,16 @@
         if($count == 1){
             if($row["type"]=="member"){  
                 $_SESSION['user_id'] = $user_id;
-                header("location: home.php");
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username; 
+                $_SESSION['type'] = $type;
+                header("location: home.php");   
              
             }else{
                 header("location: ../admin/admin.php");
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username; 
+                $_SESSION['type'] = $type;
             }
         }else{
                 header("location: login.php");
