@@ -1,15 +1,14 @@
-<?php 
- require_once 'connection.php'; 
+<?php
+require_once 'connection.php';
 session_start();
-if(!isset($_SESSION['loggedin'])) {
-	header('location: ../user/login.php');
+if (!isset($_SESSION['loggedin'])) {
+    header('location: ../user/login.php');
 }
 
 //if member must destroy session
-if($_SESSION["type"] == "member"){
+if ($_SESSION["type"] == "member") {
     session_destroy();
     exit();
-    
 }
 
 ?>
@@ -27,33 +26,38 @@ if($_SESSION["type"] == "member"){
 </head>
 
 <body>
+    <?php
+    include 'config.php';
+    if (isset($_POST['create'])) {
+        $title = $_POST['title'];
+        $performer = $_POST['performer'];
+        $venue = $_POST['venue'];
+        $description = $_POST['description'];
+        $date_start = date('Y-m-d H:i:s', strtotime($_POST['date_start']));
+        $date_end = date('Y-m-d H:i:s', strtotime($_POST['date_end']));
+        $ticket_price = $_POST['ticket_price'];
+        $status = $_POST['status'];
 
-    <div>
-        <?php
-        if (isset($_POST['create'])) {
-            $title = $_POST['title'];
-            $performer = $_POST['performer'];
-            $venue = $_POST['venue'];
-            $desc = $_POST['desc'];
-            $datestart = $_POST['datestart'];
-            $dateend = $_POST['dateend'];
-            $tprice = $_POST['tprice'];
-            $status = $_POST['status'];
+        $sql = ("INSERT INTO events (title, performer, venue, description, date_start, date_end, ticket_price, status) VALUES (?,?,?,?,?,?,?,?)");
+        if ($stmt = $db->prepare($sql)) {
+            $stmt->bindParam(1, $title, PDO::PARAM_STR);
+            $stmt->bindParam(2, $performer, PDO::PARAM_STR);
+            $stmt->bindParam(3, $venue, PDO::PARAM_STR);
+            $stmt->bindParam(4, $description, PDO::PARAM_STR);
+            $stmt->bindParam(5, $date_start, PDO::PARAM_STR);
+            $stmt->bindParam(6, $date_end, PDO::PARAM_STR);
+            $stmt->bindParam(7, $ticket_price, PDO::PARAM_STR);
+            $stmt->bindParam(8, $status, PDO::PARAM_STR);
+            $stmt->execute();
 
-            $sql = "INSERT INTO events (title, performer, venue, description, dateStart, dateEnd, ticket_price, status) VALUES (?,?,?,?,?,?,?,?)";
-            $stmtinsert = $db->prepare($sql);
-            $result = $stmtinsert->execute([$title, $performer, $venue, $desc, $datestart, $dateend, $tprice, $status]);
-            if ($result) {
-                echo 'Successfully created event.';
-                header("location: admin.php");
-                exit();
-            } else {
-                echo 'Cannot create event.';
-            }
+            echo "Successfully created event.";
+            header("location: admin.php");
+            exit();
+        } else {
+            echo 'Cannot create event.';
         }
-        ?>
-
-    </div>
+    }
+    ?>
 
     <div>
         <form action="create_event.php" method="post">
@@ -61,31 +65,39 @@ if($_SESSION["type"] == "member"){
                 <h1>Create event</h1>
                 <p>Fill up necessary information.</p><br>
                 <label for="title"><b>Title</b></label><br><br>
-                <input class="form-control" type="text" name="title"><br><br><br>
+                <input class="form-control" type="text" name="title" required><br><br><br>
 
                 <label for="performer"><b>Performer</b></label><br>
-                <input class="form-control" type="text" name="performer"><br><br><br>
+                <input class="form-control" type="text" name="performer" required><br><br><br>
 
                 <label for="venue"><b>Venue</b></label><br>
-                <input class="form-control" type="text" name="venue"><br><br><br>
+                <input class="form-control" type="text" name="venue" required><br><br><br>
 
-                <label for="desc"><b>Description</b></label><br>
-                <input class="form-control" type="text" name="desc"><br><br><br>
+                <label for="description"><b>Description</b></label><br>
+                <input class="form-control" type="text" name="description" required><br><br><br>
 
-                <label for="datestart"><b>Date Start</b></label><br>
-                <input class="form-control" type="datetime-local" name="datestart"><br><br><br>
+                <label for="date_start"><b>Date Start</b></label><br>
+                <input class="form-control" type="datetime-local" name="date_start"><br><br><br>
 
-                <label for="dateend"><b>Date End</b></label><br>
-                <input class="form-control" type="datetime-local" name="dateend"><br><br><br>
+                <label for="date_end"><b>Date End</b></label><br>
+                <input class="form-control" type="datetime-local" name="date_end"><br><br><br>
 
-                <label for="tprice"><b>Ticket Price (in Php)</b></label><br>
-                <input class="form-control" type="text" name="tprice"><br><br><br>
+                <label for="ticket_price"><b>Ticket Price (in Php)</b></label><br>
+                <input class="form-control" type="text" name="ticket_price" required><br><br><br>
 
                 <label for="status"><b>Status</b></label><br>
-                <input class="form-control" type="text" name="status"><br><br><br><br>
 
-                <input type="submit" name="create" value="Create event"><br><br><br>
-                
+                <select id="status" name="status">
+                    <option selected>Select status</option>
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Cancelled">Cancelled</option>
+                    <option value="Finished">Finished</option>
+                </select><br><br><br><br>
+
+                <input type="submit" id="create_button" name="create" value="Create event"><br><br><br>
+
+                <!--
                 <button type="submit" formaction="update_event.php">Go to Update event</button>
                 <button type="submit" formaction="delete_event.php">Go to Delete event</button>
                 <br><br><br>
@@ -93,6 +105,7 @@ if($_SESSION["type"] == "member"){
                 <button type="submit" formaction="view_participants_events.php">View participants</button>
                 <br><br><br><br><br>
                 <button type="submit" formaction="logout.php">Logout</button>
+                -->
             </div>
         </form>
     </div>
