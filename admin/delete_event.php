@@ -1,12 +1,13 @@
-<?php 
- require_once 'connection.php'; 
+<?php
+require_once 'connection.php';
 session_start();
-//redirect user if not logged in
-if(!isset($_SESSION['loggedin'])) {
-	header('location: ../user/login.php');
+
+// redirect user if not logged in
+if (!isset($_SESSION['loggedin'])) {
+    header('location: ../user/login.php');
 }
 
-//check type of user
+// check type of user
 if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
     echo "<script>
     alert('YOU ARE NOT ADMIN');
@@ -14,7 +15,6 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
     </script>";
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -29,29 +29,22 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 </head>
 
 <body>
+    <?php
+    include "view_events.php";
 
-    <div>
-        <?php
-        include "view_events.php";
-        ?>
-    </div>
-    <div>
-        <?php
-        if (isset($_POST['delete'])) {
-            $id = $_POST['id'];
+    if (isset($_POST['delete'])) {
+        $id = $_POST['id'];
 
-            $sql = "DELETE FROM events WHERE id = ? && status = 'Done'";
-            $stmt = $db->prepare($sql);
-            $result = $stmt->execute([$id]);
-            if ($result) {
-                echo 'Successfully deleted event.';
-            } else {
-                echo 'Cannot delete event.';
-            }
+        $sql = "DELETE FROM events WHERE id = ? && status = 'Cancelled' OR status = 'Finished'";
+        $stmt = $db->prepare($sql);
+        $result = $stmt->execute([$id]);
+        if ($result) {
+            echo 'Successfully deleted event.';
+        } else {
+            echo 'Cannot delete event.';
         }
-        ?>
-
-    </div>
+    }
+    ?>
 
     <div>
         <form action="delete_event.php" method="post">
@@ -63,6 +56,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 
                 <input type="submit" name="delete" value="Delete event"><br><br><br>
 
+                <!--
                 <button type="submit" formaction="create_event.php">Go to Create event</button>
                 <button type="submit" formaction="update_event.php">Go to Update event</button>
                 <br><br><br>
@@ -70,6 +64,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
                 <button type="submit" formaction="view_participants_events.php">View participants</button>
                 <br><br><br><br><br>
                 <button type="submit" formaction="logout.php">Logout</button>
+                -->
             </div>
         </form>
     </div>

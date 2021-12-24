@@ -1,12 +1,13 @@
-<?php 
- require_once 'connection.php'; 
+<?php
+require_once 'connection.php';
 session_start();
-//redirect user if not logged in
-if(!isset($_SESSION['loggedin'])) {
-	header('location: ../user/login.php');
+
+// redirect user if not logged in
+if (!isset($_SESSION['loggedin'])) {
+    header('location: ../user/login.php');
 }
 
-//check type of user
+// check type of user
 if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
     echo "<script>
     alert('YOU ARE NOT ADMIN');
@@ -28,38 +29,30 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 </head>
 
 <body>
+    <?php
+    include "view_events.php";
 
-    <div>
-        <?php
-        include "view_events.php";
-        ?>
-    </div>
+    if (isset($_POST['update'])) {
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $performer = $_POST['performer'];
+        $venue = $_POST['venue'];
+        $description = $_POST['description'];
+        $date_start = $_POST['date_start'];
+        $date_end = $_POST['date_end'];
+        $ticket_price = $_POST['tprice'];
+        $status = $_POST['status'];
 
-    <div>
-        <?php
-        if (isset($_POST['update'])) {
-            $id = $_POST['id'];
-            $title = $_POST['title'];
-            $performer = $_POST['performer'];
-            $venue = $_POST['venue'];
-            $desc = $_POST['desc'];
-            $datestart = $_POST['datestart'];
-            $dateend = $_POST['dateend'];
-            $tprice = $_POST['tprice'];
-            $status = $_POST['status'];
-
-            $sql = "UPDATE events SET title = ?, performer = ?, venue = ?, description = ?, dateStart = ?, dateEnd = ?, ticket_price = ?, status = ? WHERE id = ?";
-            $stmt = $db->prepare($sql);
-            $result = $stmt->execute([$title, $performer, $venue, $desc, $datestart, $dateend, $tprice, $status, $id]);
-            if ($result) {
-                echo 'Successfully updated existing event.';
-            } else {
-                echo 'Cannot update event.';
-            }
+        $sql = "UPDATE events SET title = ?, performer = ?, venue = ?, description = ?, date_start = ?, date_end = ?, ticket_price = ?, status = ? WHERE id = ?";
+        $stmt = $db->prepare($sql);
+        $result = $stmt->execute([$title, $performer, $venue, $description, $date_start, $date_end, $ticket_price, $status, $id]);
+        if ($result) {
+            echo 'Successfully updated existing event.';
+        } else {
+            echo 'Cannot update event.';
         }
-        ?>
-
-    </div>
+    }
+    ?>
 
     <div>
         <form action="update_event.php" method="post">
@@ -95,6 +88,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 
                 <input type="submit" name="update" value="Update event"><br><br><br>
 
+                <!--
                 <button type="submit" formaction="create_event.php">Go to Create event</button>
                 <button type="submit" formaction="delete_event.php">Go to Delete event</button>
                 <br><br><br>
@@ -102,6 +96,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
                 <button type="submit" formaction="view_participants_events.php">View participants</button>
                 <br><br><br><br><br>
                 <button type="submit" formaction="logout.php">Logout</button>
+                -->
             </div>
         </form>
     </div>
