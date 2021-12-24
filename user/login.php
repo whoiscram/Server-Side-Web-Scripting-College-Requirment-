@@ -3,7 +3,7 @@
 session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     if ($_SESSION["user"] == 1){ 
-            header("Location: user/home.php");
+            header("Location: ../user/home.php");
             exit;
     }
     else {
