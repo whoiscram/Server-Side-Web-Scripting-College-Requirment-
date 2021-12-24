@@ -1,6 +1,11 @@
 <?php
 	require_once '../admin/config.php';
 	session_start();
+
+
+	echo "User Logged in " . $_SESSION["username"] . "."; // promting username passed from login.php
+	
+
 ?>
 
 <html lang="en">

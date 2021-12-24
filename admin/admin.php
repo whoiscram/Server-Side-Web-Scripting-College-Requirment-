@@ -1,11 +1,14 @@
 <?php
   require_once 'connection.php'; 
   session_start();
-  if(empty($_SESSION['logged_in']))
-  {
-      header('Location: ../user/login.php');
-      exit;
-  }
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    
+} else {
+    header('Location: ../user/login.php');
+}
+ 
+
+
    
 ?>
 <!DOCTYPE html>
