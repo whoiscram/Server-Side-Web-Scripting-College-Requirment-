@@ -101,8 +101,11 @@ try {
                         <td width="4%"><?php echo htmlspecialchars($row['status']); ?></td>
                         <td>
                             <div class="button_actions">
-                                <button onclick="location.href='update_event.php?id='" .$row['id'] ."'>Back to Home</button>
-                                <input type="button" value="Delete">
+                                <a href="edit_event.php?edit=<?php echo $row['id']; ?>" class="edit_button">Edit</a>
+                                <form action="delete_event.php" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <input type="submit" name="delete" value="Delete">
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -110,12 +113,6 @@ try {
             </tbody>
         </table>
     </div>
-
-    <?php
-    include 'config.php';
-
-    if (isset($GET['id'], $_))
-    ?>
 
     <!--
     <div>
