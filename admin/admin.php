@@ -1,18 +1,22 @@
 <?php 
  require_once 'connection.php'; 
 session_start();
+//redirect user if not logged in
 if(!isset($_SESSION['loggedin'])) {
 	header('location: ../user/login.php');
 }
 
-//if member must destroy session
-if($_SESSION["type"] == "member"){
-    session_destroy();
-    exit();
-    
+//check type of user
+if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
+    echo "<script>
+    alert('YOU ARE NOT ADMIN');
+    window.location.href='../user/home.php';
+    </script>";
+    exit;
 }
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

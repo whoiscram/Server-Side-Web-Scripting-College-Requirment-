@@ -1,7 +1,7 @@
 <?php
   require_once '../admin/connection.php'; 
 session_start();
-//authtenticaiton.php
+//authentication.php
 ?>
 <html>  
 <head>  

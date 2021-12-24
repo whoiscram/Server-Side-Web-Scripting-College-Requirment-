@@ -1,10 +1,10 @@
 <?php      
     require_once '../admin/connection.php';  
     session_start();
-    
+    // Session Variables
     $username = $_POST['user'];  
     $password = $_POST['pass']; 
-    
+    $_SESSION["type"] = $type;
 
       
     
@@ -23,14 +23,14 @@
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username; 
-                $_SESSION['type'] = $type;
+                $_SESSION['type'] = "member";
                 header("location: home.php");   
              
             }else{
                 header("location: ../admin/admin.php");
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username; 
-                $_SESSION['type'] = $type;
+                $_SESSION['type'] = "event manager";
             }
         }else{
                 header("location: login.php");
