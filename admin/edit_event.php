@@ -29,62 +29,50 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 </head>
 
 <body>
-    <?php
-    if (isset($_POST['update'])) {
-        $id = $_POST['id'];
-        $title = $_POST['title'];
-        $performer = $_POST['performer'];
-        $venue = $_POST['venue'];
-        $description = $_POST['description'];
-        $date_start = $_POST['date_start'];
-        $date_end = $_POST['date_end'];
-        $ticket_price = $_POST['tprice'];
-        $status = $_POST['status'];
-
-        $sql = "UPDATE events SET title = ?, performer = ?, venue = ?, description = ?, date_start = ?, date_end = ?, ticket_price = ?, status = ? WHERE id = ?";
-        $stmt = $db->prepare($sql);
-        $result = $stmt->execute([$title, $performer, $venue, $description, $date_start, $date_end, $ticket_price, $status, $id]);
-        if ($result) {
-            echo 'Successfully updated existing event.';
-        } else {
-            echo 'Cannot update event.';
-        }
-    }
-    ?>
-
     <div>
-        <form action="update_event.php" method="post">
+        <form action="update_event_db.php" method="post">
             <div class="container">
                 <h1>Update event</h1>
                 <p>Update necessary information.</p><br>
-                <label for="id"><b>ID to update</b></label><br><br>
-                <input class="form-control" type="text" name="id"><br><br><br>
+                <div>
+                    <form name="form" method="post" action="">
+                        <input type="hidden" name="new" value="" />
+                        <input name="id" type="hidden" value="<?php echo $row['id']; ?>" />
+                    </form>
+                </div>
+                
+                <label for="title"><b>New Event Title</b></label><br><br>
+                <input class="form-control" type="text" name="title" required><br><br><br>
 
-                <label for="title"><b>New Title</b></label><br>
-                <input class="form-control" type="text" name="title"><br><br><br>
+                <label for="performer"><b>New Event Performer</b></label><br>
+                <input class="form-control" type="text" name="performer" required><br><br><br>
 
-                <label for="performer"><b>New Performer</b></label><br>
-                <input class="form-control" type="text" name="performer"><br><br><br>
+                <label for="venue"><b>New Event Venue</b></label><br>
+                <input class="form-control" type="text" name="venue" required><br><br><br>
 
-                <label for="venue"><b>New Venue</b></label><br>
-                <input class="form-control" type="text" name="venue"><br><br><br>
+                <label for="description"><b>New Event Description</b></label><br>
+                <input class="form-control" type="text" name="description" required><br><br><br>
 
-                <label for="desc"><b>New Description</b></label><br>
-                <input class="form-control" type="text" name="desc"><br><br><br>
+                <label for="date_start"><b>New Event Date Start</b></label><br>
+                <input class="form-control" type="datetime-local" name="date_start"><br><br><br>
 
-                <label for="datestart"><b>New Date Start</b></label><br>
-                <input class="form-control" type="datetime-local" name="datestart"><br><br><br>
+                <label for="date_end"><b>New Event Date End</b></label><br>
+                <input class="form-control" type="datetime-local" name="date_end"><br><br><br>
 
-                <label for="dateend"><b>New Date End</b></label><br>
-                <input class="form-control" type="datetime-local" name="dateend"><br><br><br>
+                <label for="ticket_price"><b>New Event Ticket Price (in Php)</b></label><br>
+                <input class="form-control" type="text" name="ticket_price" required><br><br><br>
 
-                <label for="tprice"><b>New Ticket Price (in Php)</b></label><br>
-                <input class="form-control" type="text" name="tprice"><br><br><br>
+                <label for="status"><b>New Event Status</b></label><br>
 
-                <label for="status"><b>New Status</b></label><br>
-                <input class="form-control" type="text" name="status"><br><br><br><br>
+                <select id="status" name="status">
+                    <option selected>Select status</option>
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Cancelled">Cancelled</option>
+                    <option value="Finished">Finished</option>
+                </select><br><br><br><br>
 
-                <input type="submit" name="update" value="Update event"><br><br><br>
+                <input type="submit" id="update_button" name="update" value="Update event"><br><br><br>
 
                 <!--
                 <button type="submit" formaction="create_event.php">Go to Create event</button>

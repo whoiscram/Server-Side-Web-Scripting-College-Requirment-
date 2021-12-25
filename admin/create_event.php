@@ -53,7 +53,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
             $stmt->bindParam(8, $status, PDO::PARAM_STR);
             $stmt->execute();
 
-            echo "Successfully created event.";
+            echo 'Successfully created event.';
             header("location: admin.php");
             exit();
         } else {

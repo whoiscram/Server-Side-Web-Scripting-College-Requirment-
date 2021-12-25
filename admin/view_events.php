@@ -102,7 +102,6 @@ try {
                         <td>
                             <div class="button_actions">
                                 <div style="display: inline-block;">
-                                    <!--<a href="edit_event.php?edit=<?php echo $row['id']; ?>" class="edit_button">Edit</a>-->
                                     <form action="edit_event.php" method="post">
                                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                         <input type="submit" name="edit" value="Edit">

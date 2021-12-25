@@ -26,7 +26,7 @@ if (isset($_POST['delete'])) {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
-        echo "Successfully deleted event.";
+        echo 'Successfully deleted event.';
         header("location: admin.php");
         exit();
     } else {
