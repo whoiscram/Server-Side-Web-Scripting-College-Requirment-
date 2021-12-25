@@ -1,32 +1,74 @@
 @font-face {
-    font-family: "font_h1";
-    src: url(/frontend/fonts/Bellota\ Text.ttf);
-  }
-  
-  @font-face {
-    font-family: "font_p";
-    src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
-  }
-  
-  @font-face {
-    font-family: "font_o";
-    src: url(/fonts/Josefin\ Sans.ttf);
-  }
-  
-  body{   
-    background: #eee;  
-}  
-#frm{  
-    border: solid gray 1px;  
-    width:25%;  
-    border-radius: 2px;  
-    margin: 120px auto;  
-    background: white;  
-    padding: 50px;  
-}  
-#btn{  
-    color: #fff;  
-    background: #f3ca20;  
-    padding: 7px;  
-    margin-left: 70%;  
-}  
+  font-family: "font_h1";
+  src: url(/fonts/Bellota\ Text.ttf);
+}
+
+@font-face {
+  font-family: "font_p";
+  src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
+}
+
+@font-face {
+  font-family: "font_o";
+  src: url(/fonts/Josefin\ Sans.ttf);
+}
+
+body {
+  background: #eee;
+}
+
+h1 {
+  font-family: "font_h1";
+  font-size: 40px;
+  text-align: center;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+label {
+  font-family: "font_h1";
+  font-size: 20px;
+  display: inline-block;
+  width: 100px;
+  text-align: left;
+}
+
+input {
+  display: table-cell;
+}
+
+#form {
+  border: solid black 2px;
+  width: 25%;
+  border-radius: 2px;
+  margin: 120px auto;
+  background: white;
+  padding: 50px;
+  display: table;
+}
+
+p {
+  display: table-row;
+}
+
+#btn {
+  color: black;
+  background: #f3ca20;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "font_o";
+}
+
+input[type="text"] {
+  font-size: 16px;
+  font-family: "font_p";
+  text-align: left;
+}
+
+input[type="password"] {
+  font-size: 16px;
+  font-family: "font_p";
+  text-align: left;
+}
