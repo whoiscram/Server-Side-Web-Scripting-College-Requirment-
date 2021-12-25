@@ -101,11 +101,19 @@ try {
                         <td width="4%"><?php echo htmlspecialchars($row['status']); ?></td>
                         <td>
                             <div class="button_actions">
-                                <a href="edit_event.php?edit=<?php echo $row['id']; ?>" class="edit_button">Edit</a>
-                                <form action="delete_event.php" method="post">
-                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                    <input type="submit" name="delete" value="Delete">
-                                </form>
+                                <div style="display: inline-block;">
+                                    <!--<a href="edit_event.php?edit=<?php echo $row['id']; ?>" class="edit_button">Edit</a>-->
+                                    <form action="edit_event.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <input type="submit" name="edit" value="Edit">
+                                    </form>
+                                </div>
+                                <div style="display: inline-block;">
+                                    <form action="delete_event.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <input type="submit" name="delete" value="Delete">
+                                    </form>
+                                </div>
                             </div>
                         </td>
                     </tr>

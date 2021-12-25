@@ -30,8 +30,6 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 
 <body>
     <?php
-    include "view_events.php";
-
     if (isset($_POST['update'])) {
         $id = $_POST['id'];
         $title = $_POST['title'];
