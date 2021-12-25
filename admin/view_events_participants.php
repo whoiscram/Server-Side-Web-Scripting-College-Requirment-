@@ -16,6 +16,15 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
     exit;
 }
 
+try {
+    require 'config.php';
+
+    $sql = ("SELECT CONCAT(u.given_name, ' ', u.surname) AS 'Event Participants', e.title AS 'Event Participated', e.performer AS 'Event Performer(s)', e.description AS 'Event Description', e.date_start AS 'Event Started On', e.date_end AS 'Event Ended On' FROM users u INNER JOIN events e ON u.user_id = e.id");
+    $stmt = $db->query($sql);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,63 +43,59 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
             width: 100%;
             color: #f3ca20;
             font-family: monospace;
-            font-size: 25px;
-            text-align: left;
+            font-size: 16px;
+            text-align: center;
+            border: 4px solid lightskyblue;
         }
 
         th {
-            background-color: #588c7e;
-            color: white;
+            background-color: #f3ca20;
+            color: black;
+            border: 2px solid lightskyblue;
+        }
+
+        td {
+            border: 1px solid lightskyblue;
+        }
+
+        button {
+            font-size: 14px;
+            width: 120px;
+            height: 50px;
+            padding: 0px;
         }
     </style>
-
 </head>
 
 <body>
     <h1>Viewing all participants in events</h1>
 
     <div>
-        <h1>
-            <table>
+        <table>
+            <thead>
                 <tr>
-                    <th>Participants</th>
-                    <th>Event Participated</th>
-                    <th>Participating Artist(s)</th>
-                    <th>Event Description</th>
-                    <th>Event Started On</th>
-                    <th>Event Ended On</th>
+                    <th><strong>Event Participants</strong></th>
+                    <th><strong>Event Participated</strong></th>
+                    <th><strong>Event Performer(s)</strong></th>
+                    <th><strong>Event Description</strong></th>
+                    <th><strong>Event Started On</strong></th>
+                    <th><strong>Event Ended On</strong></th>
                 </tr>
-                <?php
-                $conn = mysqli_connect("localhost", "root", "", "maki");
-                if ($conn->connect_error) {
-                    die("Conectiong failed:" . $conn->connect_error);
-                }
-                $sql = "SELECT CONCAT(u.givenName, ' ', u.Surname) AS 'Participants', e.title AS 'Event Participated', e.performer AS 'Participating Artist(s)', e.description AS 'Event Description', e.dateStart AS 'Event Started On', e.dateEnd AS 'Event Ended On' FROM users u INNER JOIN events e ON u.user_id=e.id";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row["Participants"] . "</td><td>" . $row["Event Participated"] . "</td><td>" . $row["Participating Artist(s)"] . "</td><td>" . $row["Event Description"] . "</td><td>" . $row["Event Started On"] . "</td><td>" . $row["Event Ended On"] . "</td><tr>";
-                    }
-                    echo "</table>";
-                } else {
-                    echo "No results.";
-                }
-                ?>
-            </table>
-    </div>
+            </thead>
 
-    <div>
-        <div>
-            <form action="create_event.php" method="get">
-                <button type="submit">Create event</button>
-                <button type="submit" formaction="update_event.php">Update event</button>
-                <button type="submit" formaction="delete_event.php">Delete event</button>
-                <br><br><br>
-                <button type="submit" formaction="view_events.php">View events</button>
-                <br><br><br><br><br>
-                <button type="submit" formaction="logout.php">Logout</button>
-            </form>
-        </div>
+            <tbody>
+                <?php while ($row = $stmt->fetch()) : ?>
+                    <tr>
+                        <td width="2%"><?php echo htmlspecialchars($row['name']) ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['title']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['performer']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['description']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['date_start']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['date_end']); ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
     </div>
 </body>
 
