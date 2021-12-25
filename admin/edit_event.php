@@ -15,8 +15,15 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
     </script>";
     exit;
 }
+
+if (isset($_POST['edit'])) {
+    require 'config.php';
+    $id = $_POST['id'];
+    echo $id;
+}
 ?>
 
+<!--
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,13 +41,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
             <div class="container">
                 <h1>Update event</h1>
                 <p>Update necessary information.</p><br>
-                <div>
-                    <form name="form" method="post" action="">
-                        <input type="hidden" name="new" value="" />
-                        <input name="id" type="hidden" value="<?php echo $row['id']; ?>" />
-                    </form>
-                </div>
-                
+
                 <label for="title"><b>New Event Title</b></label><br><br>
                 <input class="form-control" type="text" name="title" required><br><br><br>
 
@@ -73,8 +74,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
                 </select><br><br><br><br>
 
                 <input type="submit" id="update_button" name="update" value="Update event"><br><br><br>
-
-                <!--
+                
                 <button type="submit" formaction="create_event.php">Go to Create event</button>
                 <button type="submit" formaction="delete_event.php">Go to Delete event</button>
                 <br><br><br>
@@ -82,10 +82,11 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
                 <button type="submit" formaction="view_participants_events.php">View participants</button>
                 <br><br><br><br><br>
                 <button type="submit" formaction="logout.php">Logout</button>
-                -->
+                
             </div>
         </form>
     </div>
 </body>
 
 </html>
+-->
