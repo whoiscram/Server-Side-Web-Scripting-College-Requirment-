@@ -102,7 +102,7 @@ try {
                         <td>
                             <div class="button_actions">
                                 <div style="display: inline-block;">
-                                    <form action="edit_event.php" method="post">
+                                    <form action="edit_event.php" method="request">
                                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                         <input type="submit" name="edit" value="Edit">
                                     </form>

@@ -43,14 +43,14 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 
         $sql = ("INSERT INTO events (title, performer, venue, description, date_start, date_end, ticket_price, status) VALUES (?,?,?,?,?,?,?,?)");
         if ($stmt = $db->prepare($sql)) {
-            $stmt->bindParam(1, $title, PDO::PARAM_STR);
-            $stmt->bindParam(2, $performer, PDO::PARAM_STR);
-            $stmt->bindParam(3, $venue, PDO::PARAM_STR);
-            $stmt->bindParam(4, $description, PDO::PARAM_STR);
-            $stmt->bindParam(5, $date_start, PDO::PARAM_STR);
-            $stmt->bindParam(6, $date_end, PDO::PARAM_STR);
-            $stmt->bindParam(7, $ticket_price, PDO::PARAM_STR);
-            $stmt->bindParam(8, $status, PDO::PARAM_STR);
+            $stmt->bindParam(1, $title, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(2, $performer, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(3, $venue, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(4, $description, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(5, $date_start, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(6, $date_end, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(7, $ticket_price, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
+            $stmt->bindParam(8, $status, PDO::PARAM_STR, FILTER_SANITIZE_STRING);
             $stmt->execute();
 
             echo 'Successfully created event.';

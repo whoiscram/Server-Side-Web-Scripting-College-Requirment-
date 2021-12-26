@@ -1,5 +1,6 @@
 <?php
 require_once 'connection.php';
+require_once 'config.php';
 session_start();
 
 // redirect user if not logged in
@@ -16,14 +17,29 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
     exit;
 }
 
-if (isset($_POST['edit'])) {
-    require 'config.php';
-    $id = $_POST['id'];
-    echo $id;
+$sql = $db->prepare("SELECT * FROM events WHERE id = :id LIMIT 1");
+$sql->execute([
+    ':id' => $_REQUEST['id']
+]);
+$row = $sql->fetch(PDO::FETCH_ASSOC);
+
+if (isset($_REQUEST['update'])) {
+    $id = $_REQUEST['id'];
+    $title = filter_var($_REQUEST['title'], FILTER_SANITIZE_STRING);
+    try {
+        $sql = $db->prepare("UPDATE events SET title=:title WHERE id = :id");
+        $sql->execute([
+            ':id' => $id,
+            ':title' => $title,
+        ]);
+    } catch (PDOException $e) {
+        $pdoerror = $e->getMessage();
+        echo $pdoerror;
+    }
+    header("location: admin.php");
 }
 ?>
 
-<!--
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,14 +53,19 @@ if (isset($_POST['edit'])) {
 
 <body>
     <div>
-        <form action="update_event_db.php" method="post">
+        <form action="<?php echo "edit_event.php?id=" . $row['id'] ?>" method="post">
             <div class="container">
                 <h1>Update event</h1>
                 <p>Update necessary information.</p><br>
 
+                <?php
+                echo "<p>You're currently updating event information of: " . $row['title'] . "</p>";
+                ?>
+
                 <label for="title"><b>New Event Title</b></label><br><br>
                 <input class="form-control" type="text" name="title" required><br><br><br>
 
+                <!--
                 <label for="performer"><b>New Event Performer</b></label><br>
                 <input class="form-control" type="text" name="performer" required><br><br><br>
 
@@ -71,10 +92,12 @@ if (isset($_POST['edit'])) {
                     <option value="Ongoing">Ongoing</option>
                     <option value="Cancelled">Cancelled</option>
                     <option value="Finished">Finished</option>
-                </select><br><br><br><br>
+                </select><br><br><br><br>                
+                -->
 
-                <input type="submit" id="update_button" name="update" value="Update event"><br><br><br>
-                
+                <input type="submit" name="update" value="Update event"><br><br><br>
+
+                <!--
                 <button type="submit" formaction="create_event.php">Go to Create event</button>
                 <button type="submit" formaction="delete_event.php">Go to Delete event</button>
                 <br><br><br>
@@ -82,11 +105,11 @@ if (isset($_POST['edit'])) {
                 <button type="submit" formaction="view_participants_events.php">View participants</button>
                 <br><br><br><br><br>
                 <button type="submit" formaction="logout.php">Logout</button>
-                
+                -->
+
             </div>
         </form>
     </div>
 </body>
 
 </html>
--->
