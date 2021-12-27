@@ -9,13 +9,14 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 // check type of user
-if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
+if (!isset($_SESSION['type']) || ($_SESSION['type'] != "admin")) {
     echo "<script>
     alert('YOU ARE NOT ADMIN');
     window.location.href='../user/home.php';
     </script>";
     exit;
 }
+
 
 $sql = $db->prepare("SELECT * FROM events WHERE id = :id LIMIT 1");
 $sql->execute([
