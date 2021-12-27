@@ -1,14 +1,23 @@
 <?php
-    require_once '../admin/connection.php';
-    session_start();
-    
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        // redirect to home.php
-    } else {
-        // redirect to login page
-        header("location: login.php");
-      
-    }
+require_once '../admin/connection.php';
+session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    // redirect to home.php
+} else {
+    // redirect to login page
+    header("location: login.php");
+}
+
+try {
+    require '../admin/config.php';
+
+    $sql = "SELECT * from events WHERE status = 'Upcoming' OR status = 'Ongoing'";
+    $stmt = $db->query($sql);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +29,34 @@
     <title>Intayo MakiConcert</title>
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
 
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            color: #f3ca20;
+            font-family: monospace;
+            font-size: 16px;
+            text-align: center;
+            border: 4px solid lightskyblue;
+        }
+
+        th {
+            background-color: #f3ca20;
+            color: black;
+            border: 2px solid lightskyblue;
+        }
+
+        td {
+            border: 1px solid lightskyblue;
+        }
+
+        button {
+            font-size: 14px;
+            width: 120px;
+            height: 50px;
+            padding: 0px;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +68,7 @@
                     <li><a href="#concert">CONCERTS</a></li>
                     <li><a href="#aboutUs">ABOUT US</a></li>
                     <li><a href="#contactus">CONTACT US</a></li>
-                    <li><a href="viewProfile.php">PROFILE</a></li>
+                    <li><a href="view_profile.php">PROFILE</a></li>
                 </ul>
             </nav>
         </div>
@@ -47,6 +84,47 @@
     <article id="concert">
         <h1 style="text-align: center;">CONCERTS</h1>
         <br>
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Event Title</strong></th>
+                    <th><strong>Event Performer(s)</strong></th>
+                    <th><strong>Event Venue</strong></th>
+                    <th><strong>Event Description</strong></th>
+                    <th><strong>Event Date Start</strong></th>
+                    <th><strong>Event Date End</strong></th>
+                    <th><strong>Event Ticket Price</strong></th>
+                    <th><strong>Event Status</strong></th>
+                    <th><strong>Actions</strong></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php while ($row = $stmt->fetch()) : ?>
+                    <tr>
+                        <td width="20%"><?php echo htmlspecialchars($row['title']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['performer']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['venue']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['description']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['date_start']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['date_end']); ?></td>
+                        <td width="5%"><?php echo htmlspecialchars($row['ticket_price']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['status']); ?></td>
+                        <td>
+                            <div class="button_actions">
+                                <div style="display: inline-block;">
+                                    <form action="join_event.php" method="request">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <input type="submit" name="join" value="Join">
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+        <!--
         <div class="opm" style="background-image: url('../imgs/opm.jpg');">
             <div class="concert-box">
                 <h1>OPM Artists</h1>
@@ -77,6 +155,7 @@
 					<a href="join_event.php"><button class="join_b">Join</button></a>
             </div>
         </div>
+        -->
     </article>
 
     <section id="aboutUs" style="background-image: url(../imgs/about.jpg);
@@ -94,9 +173,9 @@
                     in support of local music artists' causes and funding. After two years of hard work and dedication, the project
                     became an established nonprofit organization that focuses on concerts for a cause here in the Philippines. </p>
                 <br>
-                <p> Each year we host a variety of events to further our mission and allow us to support our community partners. 
-                    Thanks to our small business sponsors, we host monthly fundraising events at local restaurants and shops. 
-                    In addition to that, we have community and university organization partners that graciously host events on our 
+                <p> Each year we host a variety of events to further our mission and allow us to support our community partners.
+                    Thanks to our small business sponsors, we host monthly fundraising events at local restaurants and shops.
+                    In addition to that, we have community and university organization partners that graciously host events on our
                     behalf throughout the year. </p>
             </div>
         </div>
@@ -111,12 +190,12 @@
     color: #f3ca20;
     font-size: 20px;">
                 <h1>CONTACT US</h1>
-                <p> Thank you for your interest in Concert for a Cause! If you are curious about volunteering with us, 
-                    becoming our sponsor, or inquiries you have in mind, just feel free to reach out through email or 
+                <p> Thank you for your interest in Concert for a Cause! If you are curious about volunteering with us,
+                    becoming our sponsor, or inquiries you have in mind, just feel free to reach out through email or
                     check our social media accounts linked below.
                 </p>
                 <br>
-                
+
                 <ul>
                     <li>Email:</li>
                     <li><a href="#h">makiconcert@gmail.com</a></li>
@@ -140,9 +219,9 @@
         <div class="footer" style="text-align: center;">
             <h1>© 2021 by Team Maki</h1>
         </div>
-    
+
     </footer>
-   
+
 </body>
 
 </html>

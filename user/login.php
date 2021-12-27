@@ -31,7 +31,7 @@ session_start();
                 <br>
             </div>
             <br>
-            <input type="submit" id="btn" value="Login" />
+            <input type="submit" id="btn" name="login" value="Login" />
         </form>
     </div>
 
@@ -54,6 +54,12 @@ session_start();
             }
         }
     </script>
+
+    <footer>
+        <div class="footer" style="text-align: center;">
+            <h1>© 2021 by Team Maki</h1>
+        </div>
+    </footer>
 </body>
 
 </html>
