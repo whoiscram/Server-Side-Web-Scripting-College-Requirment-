@@ -40,33 +40,7 @@ try {
             src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
         }
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            color: #f3ca20;
-            font-size: 16px;
-            text-align: center;
-            border: 4px solid lightskyblue;
-        }
 
-        th {
-            background-color: #f3ca20;
-            color: black;
-            border: 2px solid lightskyblue;
-            font-family: "font_h1";
-        }
-
-        td {
-            border: 1px solid lightskyblue;
-            font-family: "font_p";
-        }
-
-        button {
-            font-size: 14px;
-            width: 120px;
-            height: 50px;
-            padding: 0px;
-        }
     </style>
 </head>
 

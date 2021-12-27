@@ -64,11 +64,13 @@ try {
             color: black;
             border: 2px solid lightskyblue;
             font-family: "font_h1";
+            font-size: 20px;
         }
 
         td {
             border: 1px solid lightskyblue;
             font-family: "font_p";
+            font-size: 18px;
         }
 
         button {

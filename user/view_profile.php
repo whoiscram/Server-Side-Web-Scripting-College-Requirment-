@@ -24,44 +24,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" type="text/css" href="../styles/stle.css">
-
-    <style>
-        @font-face {
-            font-family: "font_h1";
-            src: url(/fonts/Bellota\ Text.ttf);
-        }
-
-        @font-face {
-            font-family: "font_p";
-            src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
-        }
-        h1 {
-            color: #f3ca20;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            color: #f3ca20;
-            font-family: monospace;
-            font-size: 16px;
-            text-align: center;
-            border: 4px solid lightskyblue;
-        }
-
-        th {
-            background-color: #f3ca20;
-            color: black;
-            border: 2px solid lightskyblue;
-            font-family: "font_h1";
-        }
-
-        td {
-            border: 1px solid lightskyblue;
-            font-family: "font_p";
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../styles/view_profile.css">
 </head>
 
 <body>
