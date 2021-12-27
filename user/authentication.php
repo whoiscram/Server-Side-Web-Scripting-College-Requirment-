@@ -30,7 +30,7 @@
                 header("location: ../admin/admin.php");
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $username; 
-                $_SESSION['type'] = "event manager";
+                $_SESSION['type'] = "admin";
             }
         }else{
                 header("location: login.php");
