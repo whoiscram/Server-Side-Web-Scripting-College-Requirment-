@@ -1,14 +1,46 @@
 <?php
-require_once(__DIR__ .'/../admin/connection.php');
+require_once '../admin/connection.php';
 session_start();
 
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-        
-} else {
-    header("location: login.php");
+// redirect user if not logged in
+if (!isset($_SESSION['loggedin'])) {
+    header('location: ../user/login.php');
+}
+
+// check type of user
+if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
+    echo "<script>
+    alert('YOU ARE NOT ADMIN');
+    window.location.href='../user/home.php';
+    </script>";
+    exit;
+}
+
+$sql = $db->prepare("SELECT * FROM events WHERE id = :id LIMIT 1");
+$sql->execute([
+    ':id' => $_REQUEST['id']
+]);
+$row = $sql->fetch(PDO::FETCH_ASSOC);
+
+if (isset($_POST['join'])) {
+    require '../admin/config.php';
+    $id = $_REQUEST['id'];
+    // must be id of currently logged in user
+    try {
+        $sql = $db->prepare("INSERT INTO event_users (user_id, event_id) VALUES (:user_id, :id)");
+        $sql->execute([
+            // passed id of current user
+            ':id' => $id,
+        ]);
+    } catch (PDOException $e) {
+        $pdoerror = $e->getMessage();
+        echo $pdoerror;
+    }
+    header("location: home.php");
 }
 ?>
 
+<!--
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,31 +110,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     <th>ticket_price</th>
                     <th>status</th>
                 </tr>
-                <?php
-                $conn = mysqli_connect("localhost", "root", "", "maki");
-                if ($conn->connect_error) {
-                    die("Conectiong failed:" . $conn->connect_error);
-                }
-                $sql = "SELECT * from events WHERE status = 'Ongoing' OR status = 'Upcoming'";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr><td>" . $row["id"] . "</td><td>" . $row["title"] . "</td><td>" . $row["performer"] . "</td><td>" . $row["venue"] . "</td><td>" . $row["description"] . "</td><td>" . $row["dateStart"] . "</td><td>" . $row["dateEnd"] . "</td><td>" . $row["ticket_price"] . "</td><td>" . $row["status"] . "</td><tr>";
-                    }
-                    echo "</table>";
-                } /*else {
-                    echo "No results.";
-                }*/
-                ?>
             </table>
     </div>
-    
+
     <div class="button-center">
         <br><br><br>
         <button class="join_b">Join</button>
         <br><br><br>
     </div>
- 
+
     <footer>
         <div class="footer" style="text-align: center;">
             <h1>© 2021 by Team Maki</h1>
@@ -111,3 +127,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 </body>
 
 </html>
+-->
