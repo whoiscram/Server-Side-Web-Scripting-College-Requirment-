@@ -39,6 +39,16 @@ try {
     <title>View events (admin)</title>
 
     <style>
+        @font-face {
+            font-family: "font_h1";
+            src: url(/fonts/Bellota\ Text.ttf);
+        }
+
+        @font-face {
+            font-family: "font_p";
+            src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -53,10 +63,12 @@ try {
             background-color: #f3ca20;
             color: black;
             border: 2px solid lightskyblue;
+            font-family: "font_h1";
         }
 
         td {
             border: 1px solid lightskyblue;
+            font-family: "font_p";
         }
 
         button {
@@ -126,7 +138,7 @@ try {
 
     <div>
         <form action="admin.php">
-            <input type="submit" value="Back" />
+            <input type="submit" name="back" value="Back" />
         </form>
     </div>
     <!--

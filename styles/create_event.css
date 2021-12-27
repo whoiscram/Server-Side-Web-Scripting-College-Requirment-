@@ -1,63 +1,88 @@
 @font-face {
-    font-family: "font_h1";
-    src: url(/fonts/Bellota\ Text.ttf);
+  font-family: "font_h1";
+  src: url(/fonts/Bellota\ Text.ttf);
 }
 
 @font-face {
-    font-family: "font_p";
-    src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
+  font-family: "font_p";
+  src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
 }
 
 @font-face {
-    font-family: "font_o";
-    src: url(/fonts/Josefin\ Sans.ttf);
+  font-family: "font_o";
+  src: url(/fonts/Josefin\ Sans.ttf);
 }
 
 body {
-    background-color: #171810;
+  background-color: #171810;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/imgs/opm.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
-    font-family: "font_h1";
-    font-size: 60px;
-    color: #f3ca20;
+  font-family: "font_h1";
+  font-size: 60px;
+  color: #f3ca20;
 }
 
 p,
 label {
-    font-family: "font_p";
-    font-size: 20px;
-    color: #f3ca20;
+  font-family: "font_p";
+  font-size: 20px;
+  color: #fff;
 }
 
 input[type="submit"] {
-    font-family: "font_p";
-    color: #fff;
-    background: black;
-    padding: 8px 60px;
-    text-decoration: none;
-    border: 1px solid yellow;
-    border-radius: 14px;
-    font-size: 22px;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
+  font-family: "font_p";
+  color: #fff;
+  background: black;
+  padding: 8px 60px;
+  text-decoration: none;
+  border: 1px solid yellow;
+  border-radius: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+#status {
+  background-color: #f3ca20;
+  border: 3px solid #555;
+  font-size: 16px;
+  font-family: "font_p";
+  text-align: left;
+}
+
+input[type="text"]:focus,
+input[type="datetime-local"]:focus,
+#status:focus {
+  background-color: #f3ca20;
+  border: 3px solid #555;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-family: "font_p";
+  text-align: left;
 }
 
 form {
-    text-align: center;
+  text-align: center;
 }
 
 button {
-    font-family: "font_p";
-    color: #fff;
-    background: black;
-    padding: 8px 60px;
-    text-decoration: none;
-    border: 1px solid yellow;
-    border-radius: 14px;
-    font-size: 22px;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
+  font-family: "font_p";
+  color: #fff;
+  background: black;
+  padding: 8px 60px;
+  text-decoration: none;
+  border: 1px solid yellow;
+  border-radius: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
 }

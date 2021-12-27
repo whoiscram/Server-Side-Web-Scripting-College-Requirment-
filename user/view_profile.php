@@ -2,7 +2,7 @@
 require_once '../admin/config.php';
 session_start();
 
-echo "User Logged in as: " . $_SESSION["username"] . ""; // prompting username passed from login.php
+//echo "User Logged in as: " . $_SESSION["username"] . ""; // prompting username passed from login.php
 $user_id = $_SESSION['user_id'];
 
 try {
@@ -24,9 +24,18 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/stle.css">
 
     <style>
+        @font-face {
+            font-family: "font_h1";
+            src: url(/fonts/Bellota\ Text.ttf);
+        }
+
+        @font-face {
+            font-family: "font_p";
+            src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
+        }
         h1 {
             color: #f3ca20;
         }
@@ -45,17 +54,12 @@ try {
             background-color: #f3ca20;
             color: black;
             border: 2px solid lightskyblue;
+            font-family: "font_h1";
         }
 
         td {
             border: 1px solid lightskyblue;
-        }
-
-        button {
-            font-size: 14px;
-            width: 120px;
-            height: 50px;
-            padding: 0px;
+            font-family: "font_p";
         }
     </style>
 </head>
@@ -73,7 +77,10 @@ try {
         </nav>
     </div>
 
-    <h1>Viewing all joined events</h1>
+    <?php
+    echo "<h1>Viewing " . $_SESSION["username"] . "'s joined events</h1>";
+    ?>
+
     <br>
 
     <div>
@@ -92,11 +99,11 @@ try {
             <tbody>
                 <?php while ($row = $stmt->fetch()) : ?>
                     <tr>
-                    <td width="10%"><?php echo htmlspecialchars($row['Event Participated']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Participated']); ?></td>
                         <td width="20%"><?php echo htmlspecialchars($row['Event Performer(s)']); ?></td>
                         <td width="20%"><?php echo htmlspecialchars($row['Event Description']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['Event Started On']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['Event Ended On']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Started On']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Ended On']); ?></td>
                         <td>
                             <div class="button_actions">
                                 <div style="display: inline-block;">

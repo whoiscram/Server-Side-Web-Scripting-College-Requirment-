@@ -27,14 +27,23 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intayo MakiConcert</title>
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+    <link rel="stylesheet" type="text/css" href="../styles/home.css">
 
     <style>
+        @font-face {
+            font-family: "font_h1";
+            src: url(/fonts/Bellota\ Text.ttf);
+        }
+
+        @font-face {
+            font-family: "font_p";
+            src: url(/fonts/Baloo\ Bhaijaan\ 2.ttf);
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
             color: #f3ca20;
-            font-family: monospace;
             font-size: 16px;
             text-align: center;
             border: 4px solid lightskyblue;
@@ -44,10 +53,12 @@ try {
             background-color: #f3ca20;
             color: black;
             border: 2px solid lightskyblue;
+            font-family: "font_h1";
         }
 
         td {
             border: 1px solid lightskyblue;
+            font-family: "font_p";
         }
 
         button {
@@ -84,46 +95,49 @@ try {
     <article id="concert">
         <h1 style="text-align: center;">CONCERTS</h1>
         <br>
-        <table>
-            <thead>
-                <tr>
-                    <th><strong>Event Title</strong></th>
-                    <th><strong>Event Performer(s)</strong></th>
-                    <th><strong>Event Venue</strong></th>
-                    <th><strong>Event Description</strong></th>
-                    <th><strong>Event Date Start</strong></th>
-                    <th><strong>Event Date End</strong></th>
-                    <th><strong>Event Ticket Price</strong></th>
-                    <th><strong>Event Status</strong></th>
-                    <th><strong>Actions</strong></th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php while ($row = $stmt->fetch()) : ?>
+        <div>
+            <table>
+                <thead>
                     <tr>
-                        <td width="20%"><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['performer']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['venue']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['description']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['date_start']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['date_end']); ?></td>
-                        <td width="5%"><?php echo htmlspecialchars($row['ticket_price']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['status']); ?></td>
-                        <td>
-                            <div class="button_actions">
-                                <div style="display: inline-block;">
-                                    <form action="join_event.php" method="request">
-                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                        <input type="submit" name="join" value="Join">
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
+                        <th><strong>Event Title</strong></th>
+                        <th><strong>Event Performer(s)</strong></th>
+                        <th><strong>Event Venue</strong></th>
+                        <th><strong>Event Description</strong></th>
+                        <th><strong>Event Date Start</strong></th>
+                        <th><strong>Event Date End</strong></th>
+                        <th><strong>Event Ticket Price</strong></th>
+                        <th><strong>Event Status</strong></th>
+                        <th><strong>Actions</strong></th>
                     </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    <?php while ($row = $stmt->fetch()) : ?>
+                        <tr>
+                            <td width="20%"><?php echo htmlspecialchars($row['title']); ?></td>
+                            <td width="20%"><?php echo htmlspecialchars($row['performer']); ?></td>
+                            <td width="10%"><?php echo htmlspecialchars($row['venue']); ?></td>
+                            <td width="20%"><?php echo htmlspecialchars($row['description']); ?></td>
+                            <td width="10%"><?php echo htmlspecialchars($row['date_start']); ?></td>
+                            <td width="10%"><?php echo htmlspecialchars($row['date_end']); ?></td>
+                            <td width="5%"><?php echo htmlspecialchars($row['ticket_price']); ?></td>
+                            <td width="20%"><?php echo htmlspecialchars($row['status']); ?></td>
+                            <td>
+                                <div class="button_actions">
+                                    <div style="display: inline-block;">
+                                        <form action="join_event.php" method="request">
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <input type="submit" name="join" value="Join">
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
+
         <!--
         <div class="opm" style="background-image: url('../imgs/opm.jpg');">
             <div class="concert-box">
