@@ -14,13 +14,18 @@
 }
 
 body {
-  background: #eee;
+  background-color: #171810;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/imgs/login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
   font-family: "font_h1";
   font-size: 40px;
   text-align: center;
+  color: #f3ca20;
 }
 
 div {
@@ -28,6 +33,7 @@ div {
 }
 
 label {
+  color: #eee;
   font-family: "font_h1";
   font-size: 20px;
   display: inline-block;
@@ -40,11 +46,11 @@ input {
 }
 
 #form {
-  border: solid black 2px;
+  background: #171717;
+  border: solid #eee 2px;
   width: 25%;
   border-radius: 2px;
   margin: 120px auto;
-  background: white;
   padding: 50px;
   display: table;
 }
@@ -54,21 +60,37 @@ p {
 }
 
 #btn {
-  color: black;
+  color: #171717;
   background: #f3ca20;
+  border: solid #eee 1px;
   padding: 10px;
   font-size: 20px;
   font-family: "font_p";
+  cursor: pointer;
 }
 
 input[type="text"] {
   font-size: 16px;
   font-family: "font_p";
   text-align: left;
+  background-color: #eee;
+  border: 3px solid #555;
 }
 
 input[type="password"] {
   font-size: 16px;
+  font-family: "font_p";
+  text-align: left;
+  background-color: #eee;
+  border: 3px solid #555;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #eee;
+  border: 3px solid #555;
+  padding: 12px 20px;
+  font-size: 18px;
   font-family: "font_p";
   text-align: left;
 }
