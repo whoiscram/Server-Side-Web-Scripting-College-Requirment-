@@ -3,11 +3,12 @@ require_once '../admin/config.php';
 session_start();
 
 echo "User Logged in as: " . $_SESSION["username"] . ""; // prompting username passed from login.php
+$user_id = $_SESSION['user_id'];
 
 try {
     require '../admin/config.php';
 
-    $sql = ("SELECT * from events");
+    $sql = ("SELECT e.id, e.title AS 'Event Participated', e.performer AS 'Event Performer(s)', e.description AS 'Event Description', e.date_start AS 'Event Started On', e.date_end AS 'Event Ended On' FROM event_users eu INNER JOIN events e ON eu.event_id = e.id WHERE eu.user_id = $user_id");
     $stmt = $db->query($sql);
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -79,14 +80,11 @@ try {
         <table>
             <thead>
                 <tr>
-                    <th><strong>Event Title</strong></th>
+                    <th><strong>Event Participated</strong></th>
                     <th><strong>Event Performer(s)</strong></th>
-                    <th><strong>Event Venue</strong></th>
                     <th><strong>Event Description</strong></th>
-                    <th><strong>Event Date Start</strong></th>
-                    <th><strong>Event Date End</strong></th>
-                    <th><strong>Event Ticket Price</strong></th>
-                    <th><strong>Event Status</strong></th>
+                    <th><strong>Event Started On</strong></th>
+                    <th><strong>Event Ended On</strong></th>
                     <th><strong>Actions</strong></th>
                 </tr>
             </thead>
@@ -94,14 +92,11 @@ try {
             <tbody>
                 <?php while ($row = $stmt->fetch()) : ?>
                     <tr>
-                        <td width="10%"><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['performer']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['venue']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['description']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['date_start']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['date_end']); ?></td>
-                        <td width="4%"><?php echo htmlspecialchars($row['ticket_price']); ?></td>
-                        <td width="4%"><?php echo htmlspecialchars($row['status']); ?></td>
+                    <td width="10%"><?php echo htmlspecialchars($row['Event Participated']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Performer(s)']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Description']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['Event Started On']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['Event Ended On']); ?></td>
                         <td>
                             <div class="button_actions">
                                 <div style="display: inline-block;">
