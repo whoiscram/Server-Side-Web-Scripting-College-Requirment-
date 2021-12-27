@@ -34,7 +34,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
         <button type="submit">Create event</button>
         <br><br><br>
         <button type="submit" formaction="view_events.php">View events</button>
-        <button type="submit" formaction="view_participants_events.php">View participants</button>
+        <button type="submit" formaction="view_events_participants.php">View participants</button>
         <br><br><br><br><br>
         <button type="submit" formaction="logout.php">Logout</button>
     </form>

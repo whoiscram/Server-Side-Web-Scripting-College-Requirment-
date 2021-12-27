@@ -19,7 +19,7 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
 try {
     require 'config.php';
 
-    $sql = ("SELECT CONCAT(u.given_name, ' ', u.surname) AS 'Event Participants', e.title AS 'Event Participated', e.performer AS 'Event Performer(s)', e.description AS 'Event Description', e.date_start AS 'Event Started On', e.date_end AS 'Event Ended On' FROM users u INNER JOIN events e ON u.user_id = e.id");
+    $sql = ("SELECT CONCAT(u.given_name, ' ', u.surname) AS 'Event Participants', e.title AS 'Event Participated', e.performer AS 'Event Performer(s)', e.description AS 'Event Description', e.date_start AS 'Event Started On', e.date_end AS 'Event Ended On' FROM event_users eu INNER JOIN events e ON eu.event_id = e.id INNER JOIN users u ON eu.user_id = u.user_id ORDER BY u.user_id, e.title");
     $stmt = $db->query($sql);
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -86,16 +86,24 @@ try {
             <tbody>
                 <?php while ($row = $stmt->fetch()) : ?>
                     <tr>
-                        <td width="2%"><?php echo htmlspecialchars($row['name']) ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['performer']); ?></td>
-                        <td width="20%"><?php echo htmlspecialchars($row['description']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['date_start']); ?></td>
-                        <td width="10%"><?php echo htmlspecialchars($row['date_end']); ?></td>
+                        <td width="2%"><?php echo htmlspecialchars($row['Event Participants']) ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['Event Participated']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Performer(s)']); ?></td>
+                        <td width="20%"><?php echo htmlspecialchars($row['Event Description']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['Event Started On']); ?></td>
+                        <td width="10%"><?php echo htmlspecialchars($row['Event Ended On']); ?></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
+    </div>
+
+    <br>
+
+    <div>
+        <form action="admin.php">
+            <input type="submit" value="Back" />
+        </form>
     </div>
 </body>
 

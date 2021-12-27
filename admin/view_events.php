@@ -121,6 +121,13 @@ try {
         </table>
     </div>
 
+    <br>
+
+    <div>
+        <form action="admin.php">
+            <input type="submit" value="Back" />
+        </form>
+    </div>
     <!--
     <div>
         <form action="create_event.php" method="get">
