@@ -27,11 +27,26 @@ $row = $sql->fetch(PDO::FETCH_ASSOC);
 if (isset($_REQUEST['update'])) {
     $id = $_REQUEST['id'];
     $title = filter_var($_REQUEST['title'], FILTER_SANITIZE_STRING);
+    $performer = filter_var($_REQUEST['performer'], FILTER_SANITIZE_STRING);
+    $venue = filter_var($_REQUEST['venue'], FILTER_SANITIZE_STRING);
+    $description = filter_var($_REQUEST['description'], FILTER_SANITIZE_STRING);
+    $date_start = filter_var($_REQUEST['date_start'], FILTER_SANITIZE_STRING);
+    $date_end = filter_var($_REQUEST['date_end'], FILTER_SANITIZE_STRING);
+    $ticket_price = filter_var($_REQUEST['ticket_price'], FILTER_SANITIZE_STRING);
+    $status = filter_var($_REQUEST['status'], FILTER_SANITIZE_STRING);
+
     try {
-        $sql = $db->prepare("UPDATE events SET title=:title WHERE id = :id");
+        $sql = $db->prepare("UPDATE events SET title=:title, performer=:performer, venue=:venue, description=:description, date_start=:date_start, date_end=:date_end, ticket_price=:ticket_price, status=:status WHERE id = :id");
         $sql->execute([
             ':id' => $id,
             ':title' => $title,
+            ':performer' => $performer,
+            ':venue' => $venue,
+            ':description' => $description,
+            ':date_start' => $date_start,
+            ':date_end' => $date_end,
+            ':ticket_price' => $ticket_price,
+            ':status' => $status
         ]);
     } catch (PDOException $e) {
         $pdoerror = $e->getMessage();
@@ -66,7 +81,6 @@ if (isset($_REQUEST['update'])) {
                 <label for="title"><b>New Event Title</b></label><br><br>
                 <input class="form-control" type="text" name="title" required><br><br><br>
 
-                <!--
                 <label for="performer"><b>New Event Performer</b></label><br>
                 <input class="form-control" type="text" name="performer" required><br><br><br>
 
@@ -93,8 +107,7 @@ if (isset($_REQUEST['update'])) {
                     <option value="Ongoing">Ongoing</option>
                     <option value="Cancelled">Cancelled</option>
                     <option value="Finished">Finished</option>
-                </select><br><br><br><br>                
-                -->
+                </select><br><br><br><br>
 
                 <input type="submit" name="update" value="Update event"><br><br><br>
 
