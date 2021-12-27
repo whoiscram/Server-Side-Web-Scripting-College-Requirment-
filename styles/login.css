@@ -53,6 +53,7 @@ input {
   margin: 120px auto;
   padding: 50px;
   display: table;
+  border-radius: 20px;
 }
 
 p {
@@ -62,6 +63,7 @@ p {
 #btn {
   color: #171717;
   background: #f3ca20;
+  border-radius: 18px;
   border: solid #eee 1px;
   padding: 10px;
   font-size: 20px;
