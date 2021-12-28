@@ -91,10 +91,24 @@ if (isset($_REQUEST['update'])) {
                 <input class="form-control" type="text" name="description" required><br><br><br>
 
                 <label for="date_start"><b>New Event Date Start</b></label><br>
-                <input class="form-control" type="datetime-local" name="date_start"><br><br><br>
+                <input class="form-control" type="datetime-local" name="date_start" id="start"><br><br><br>
 
                 <label for="date_end"><b>New Event Date End</b></label><br>
-                <input class="form-control" type="datetime-local" name="date_end"><br><br><br>
+                <input class="form-control" type="datetime-local" name="date_end" id="end"><br><br><br>
+
+                <script>
+                    var start = document.getElementById('start');
+                    var end = document.getElementById('end');
+
+                    start.addEventListener('change', function() {
+                    if (start.value)
+                        end.min = start.value;
+                    }, false);
+                    end.addEventListener('change', function() {
+                    if (end.value)
+                        start.max = end.value;
+                    }, false);
+                    </script>
 
                 <label for="ticket_price"><b>New Event Ticket Price (in Php)</b></label><br>
                 <input class="form-control" type="text" name="ticket_price" required><br><br><br>
