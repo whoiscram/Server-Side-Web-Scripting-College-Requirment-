@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 24, 2021 at 07:31 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.0
+-- Generation Time: Dec 28, 2021 at 06:00 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,7 +60,13 @@ INSERT INTO `events` (`id`, `title`, `performer`, `venue`, `description`, `date_
 (23, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '2021-12-21 13:45:44'),
 (24, '<h1>Programming</h1>', '<h1>maki</h1>', '<h1>samcis</h1>', '<h1>demo</h1>', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '2021-12-21 13:47:12'),
 (25, 'digital arts', 'maki', 'samcis', 'demo', '2021-12-01 13:49:00', '2021-11-01 13:49:00', 0, '', '2021-12-21 13:49:31'),
-(26, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '2021-12-21 13:50:57');
+(26, '', '', '', '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '2021-12-21 13:50:57'),
+(28, 'adsfcsrd', 'eargfer', 'esrgverfgv', 'ergverfv', '2021-12-30 00:15:00', '2021-12-08 00:15:00', 455, 'Ongoing', '2021-12-28 00:15:15'),
+(29, 'wsefewsr', 'wergerfg', 'ergverf', 'ergerfg', '2021-12-09 00:19:00', '2021-12-01 00:18:00', 5666, 'Upcoming', '2021-12-28 00:18:21'),
+(30, 'hat', 'dog', 'gaerg', 'ergertf', '2021-12-07 14:38:00', '2021-12-15 17:42:00', 5600, 'Upcoming', '2021-12-28 00:37:34'),
+(31, 'hatdig', 'hatdig', 'aferg', 'eargerg', '2021-12-07 23:27:00', '2021-12-16 23:27:00', 25, 'Finished', '2021-12-28 23:27:56'),
+(32, 'sferg', 'etrgderg', 'ertge5rg', 'etrgerg', '2021-11-04 23:28:00', '2021-11-07 23:28:00', 123, 'Finished', '2021-12-28 23:28:19'),
+(33, 'sdegferg', 'ergsrdetg', 'tderbhrfgth', 'gyhrdfth', '2021-12-09 23:28:00', '2021-12-31 23:28:00', 4854, 'Finished', '2021-12-28 23:28:45');
 
 -- --------------------------------------------------------
 
@@ -85,7 +91,8 @@ INSERT INTO `event_users` (`user_id`, `event_id`, `type`) VALUES
 (3, 3, 'member'),
 (4, 1, 'member'),
 (4, 2, 'member'),
-(4, 3, 'member');
+(4, 3, 'member'),
+(13, 0, '');
 
 -- --------------------------------------------------------
 
@@ -155,7 +162,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`

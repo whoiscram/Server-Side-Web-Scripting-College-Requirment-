@@ -119,7 +119,9 @@ try {
                                 <div style="display: inline-block;">
                                     <form action="edit_event.php" method="request">
                                         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                        <?php if ($row['status'] != 'Finished') : ?>
                                         <input type="submit" name="edit" value="Edit">
+                                        <?php endif ?>
                                     </form>
                                 </div>
                                 <div style="display: inline-block;">
