@@ -80,10 +80,24 @@ if (!isset($_SESSION['type']) || ($_SESSION['type'] != "admin")) {
                 <input class="form-control" type="text" name="description" required><br><br><br>
 
                 <label for="date_start"><b>Date Start</b></label><br>
-                <input class="form-control" type="datetime-local" name="date_start"><br><br><br>
+                <input class="form-control" type="datetime-local" name="date_start" id="start"><br><br><br>
 
                 <label for="date_end"><b>Date End</b></label><br>
-                <input class="form-control" type="datetime-local" name="date_end"><br><br><br>
+                <input class="form-control" type="datetime-local" name="date_end" id="end"><br><br><br>
+
+                <script>
+                    var start = document.getElementById('start');
+                    var end = document.getElementById('end');
+
+                    start.addEventListener('change', function() {
+                    if (start.value)
+                        end.min = start.value;
+                    }, false);
+                    end.addEventLiseter('change', function() {
+                    if (end.value)
+                        start.max = end.value;
+                    }, false);
+                    </script>
 
                 <label for="ticket_price"><b>Ticket Price (in Php)</b></label><br>
                 <input class="form-control" type="text" name="ticket_price" required><br><br><br>
