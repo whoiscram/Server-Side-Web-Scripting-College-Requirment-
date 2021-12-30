@@ -8,22 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
     header('location: ../user/login.php');
 }
 
-/*
-// check type of user
-if (!isset($_SESSION['type']) || ($_SESSION['type'] != "event manager")) {
-    echo "<script>
-    alert('YOU ARE NOT ADMIN');
-    window.location.href='../user/home.php';
-    </script>";
-    exit;
-}
 
-$sql = $db->prepare("SELECT * FROM events WHERE id = :id LIMIT 1");
-$sql->execute([
-    ':id' => $_REQUEST['id']
-]);
-$row = $sql->fetch(PDO::FETCH_ASSOC);
-*/
 if (isset($_REQUEST['cancel'])) {
     require '../admin/config.php';
     $event_id = $_REQUEST['id'];

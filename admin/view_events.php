@@ -145,19 +145,6 @@ try {
             <input type="submit" name="back" value="Back" />
         </form>
     </div>
-    <!--
-    <div>
-        <form action="create_event.php" method="get">
-            <button type="submit">Create event</button>
-            <button type="submit" formaction="update_event.php">Update event</button>
-            <button type="submit" formaction="delete_event.php">Delete event</button>
-            <br><br><br>
-            <button type="submit" formaction="view_participants_events.php">View participants</button>
-            <br><br><br><br><br>
-            <button type="submit" formaction="logout.php">Logout</button>
-        </form>
-    </div>
-    -->
 </body>
 
 </html>

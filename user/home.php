@@ -111,39 +111,6 @@ try {
                 </tbody>
             </table>
         </div>
-
-        <!--
-        <div class="opm" style="background-image: url('../imgs/opm.jpg');">
-            <div class="concert-box">
-                <h1>OPM Artists</h1>
-                <p>You can watch and engage with your favorite OPM artists like Parokya ni Edgar, Imago, Moonstar88, and
-                    6Cyclemind!</p>
-					<a href="join_event.php"><button class="join_b">Join</button></a>
-            </div>
-        </div>
-        <div class="awit" style="background-image: url(../imgs/awit.jpg);">
-            <div class="concert-box">
-                <h1>Awit Para Sa Mga Bata</h1>
-                <p>Be part of Save the Children Philippines’ ongoing “eSave Natin ang Pasko” Christmas fundraising
-                    campaign that
-                    also promotes the importance of a nurturing home through the “Mapagkalingang Tahanan” advocacy which
-                    supports both children and their parents, guardians, and caregivers in facilitating a sound learning
-                    environment.</p>
-					<a href="join_event.php"><button class="join_b">Join</button></a>
-            </div>
-        </div>
-        <div class="hiraya" style="background-image: url(../imgs/hiraya.jpg);">
-            <div class="concert-box">
-                <h1>Hiraya</h1>
-                <p>Hiraya is a two-in-one event — both a celebration for our achievements for the first half of 2021, as
-                    well as
-                    a fundraiser to help bridge the pressing needs for basic necessities of the chosen beneficiary — the
-                    families
-                    of the children under the organization’s flagship project, Project Bata Mag-aral Ka (PBMK).</p>
-					<a href="join_event.php"><button class="join_b">Join</button></a>
-            </div>
-        </div>
-        -->
     </article>
 
     <section id="aboutUs" style="background-image: url(../imgs/about.jpg);

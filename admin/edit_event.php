@@ -125,16 +125,7 @@ if (isset($_REQUEST['update'])) {
 
                 <input type="submit" name="update" value="Update event"><br><br><br>
 
-                <!--
-                <button type="submit" formaction="create_event.php">Go to Create event</button>
-                <button type="submit" formaction="delete_event.php">Go to Delete event</button>
-                <br><br><br>
-                <button type="submit" formaction="view_events.php">View events</button>
-                <button type="submit" formaction="view_participants_events.php">View participants</button>
-                <br><br><br><br><br>
-                <button type="submit" formaction="logout.php">Logout</button>
-                -->
-
+           
             </div>
         </form>
     </div>
